@@ -6,6 +6,17 @@ body {
     background-color: #ffffff; /* Fondo blanco */
 }
 
+/* Estilos para el body */
+.banner {
+    max-width: 100%; /* No excede el ancho del contenedor */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: auto; /* Mantiene proporciones */
+    margin: 1rem auto; /* Centrado con margen */
+    display: block; /* Asegura que sea un bloque */
+    border: 2px solid #ffb6c1; /* Borde rosa suave */
+    border-radius: 8px; /* Bordes cuadrados */
+} 
+    
 header {
     background-color: #333;
     color: white;
