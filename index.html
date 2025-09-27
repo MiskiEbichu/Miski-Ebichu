@@ -1,0 +1,125 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miski Ebichu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1>Miski Ebichu</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio">
+        <h2>Bienvenidos a Miski Ebichu</h2>
+        <p>Descubre las últimas tendencias en accesorios kawaii, ropa para todos los estilos y más.</p>
+    </section>
+
+    <!-- Sección de Productos -->
+    <section id="productos">
+        <h2>Nuestros Productos</h2>
+        <div class="producto">
+            <img src="https://via.placeholder.com/150" alt="Camiseta">
+            <h3>Camiseta Clásica</h3>
+            <p>Precio: S/.35.00</p>
+            <button onclick="comprarProducto('Camiseta Clásica')">Comprar</button>
+        </div>
+        <div class="producto">
+            <img src="https://via.placeholder.com/150" alt="Jeans">
+            <h3>Jeans Modernos</h3>
+            <p>Precio: S/.35.00</p>
+            <button onclick="comprarProducto('Jeans Modernos')">Comprar</button>
+        </div>
+        <div class="producto">
+            <img src="https://via.placeholder.com/150" alt="Chaqueta">
+            <h3>Chaqueta Casual</h3>
+            <p>Precio: S/.50.00</p>
+            <button onclick="comprarProducto('Chaqueta Casual')">Comprar</button>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="sobre-nosotros">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos una tienda virtual dedicada a ofrecer productos kawaii, accesorios, ropa de calidad con estilo único y más. Nuestra misión es que te sientas cómodo y a la moda.</p>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <p>Celular: +51 902023598</p>
+        <p>WhatsApp: +51 902023598</p>
+        <p>Correo: elizacp9815@gmail.com</p>
+        <div class="form-container">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="email" id="email" placeholder="Correo Electrónico" required>
+            <textarea id="mensaje" placeholder="Mensaje" required></textarea>
+            <button onclick="enviarFormulario()">Enviar</button>
+        </div>
+    </section>
+         <div class="redes-sociales">
+            <a href="https://facebook.com/miskiebichu" target="_blank">Facebook</a> |
+            <a href="https://instagram.com/miskiebichu" target="_blank">Instagram</a> |
+            <a href="https://tiktok.com/@miskiebichu" target="_blank">TikTok</a>
+            <p>Aceptamos todas las formas de pago.</p>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Miski Ebichu. Todos los derechos reservados.</p>
+       
+
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
