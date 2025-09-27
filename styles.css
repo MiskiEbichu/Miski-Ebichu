@@ -107,6 +107,7 @@ footer {
 .redes-sociales a {
     color: pink;
     text-decoration: black;
+    text-align: center;
     margin: 0 0.5rem;
 }
 
