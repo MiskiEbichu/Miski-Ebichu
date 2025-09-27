@@ -15,5 +15,5 @@ function enviarFormulario() {
 
 function comprarProducto(nombreProducto) {
     const mensaje = encodeURIComponent(`Hola, estoy interesado en comprar el producto: ${nombreProducto}`);
-    window.open(`https://wa.me/51902023598?text=${mensaje}`, '_blank');
+    window.open(`https://wa.me/51990662988?text=${mensaje}`, '_blank');
 }
