@@ -115,6 +115,14 @@ footer {
     width: 100%;
 }
 
+.redes-sociales {
+    margin-top: 1rem;
+    display: flex; /* Centra horizontalmente */
+    justify-content: center; /* Alinea íconos al centro */
+    align-items: center; /* Alinea verticalmente */
+    flex-wrap: wrap; /* Permite ajuste en pantallas pequeñas */
+} 
+
 .redes-sociales a {
     color: pink;
     text-decoration: black;
