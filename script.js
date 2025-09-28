@@ -156,7 +156,7 @@ document.getElementById('form-pago').addEventListener('submit', function(e) {
         url = 'https://sandbox.payu.com/'; // Ejemplo; integra API real
         alert('Redirigiendo a pago con tarjeta. Total: S/. ' + total.toFixed(2));
     } else if (metodo === 'yape') {
-        url = 'yape://pay?phone=51990662988&amount=' + total; // Abre app Yape
+        url = 'https://yapeapp.pe/990662988' + total; // Abre app Yape
     } else if (metodo === 'plin') {
         url = 'https://plin.com/pay?phone=51902023598&amount=' + total; // Simular Plin
     } else if (metodo === 'mercado-pago') {
