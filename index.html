@@ -216,7 +216,46 @@
             <input type="email" id="email" placeholder="Correo Electrónico" required>
             <textarea id="mensaje" placeholder="Mensaje" required></textarea>
             <button onclick="enviarFormulario()">Enviar</button>
+                   </div>
+    </section>
+
+    <!-- Carrito Modal -->
+    <div id="carrito" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCarrito()">&times;</span>
+            <h2>Tu Carrito</h2>
+            <div id="carrito-items"></div>
+            <div id="carrito-total">
+                <p>Total: S/. <span id="total-precio">0.00</span></p>
+            </div>
+            <button onclick="procederAlPago()" id="btn-proceder">Proceder al Pago</button>
+            <button onclick="vaciarCarrito()">Vaciar Carrito</button>
         </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCheckout()">&times;</span>
+            <h2>Finalizar Compra</h2>
+            <form id="form-pago">
+                <label for="nombre-completo">Nombre Completo:</label>
+                <input type="text" id="nombre-completo" required>
+                <label for="email-pago">Correo Electrónico:</label>
+                <input type="email" id="email-pago" required>
+                <label for="metodo-pago">Método de Pago:</label>
+                <select id="metodo-pago" required>
+                    <option value="">Selecciona un método</option>
+                    <option value="tarjeta">Tarjeta de Crédito/Débito (Visa/Mastercard)</option>
+                    <option value="yape">Yape</option>
+                    <option value="plin">Plin</option>
+                    <option value="mercado-pago">Mercado Pago</option>
+                </select>
+                <div id="detalles-pago"></div>
+                <button type="submit">Pagar Ahora</button>
+            </form>
+        </div>
+</div>
                                           </section>
           <div class="redes-sociales">
             <a href="https://facebook.com/miskiebichu" target="_pink">Facebook</a> |
