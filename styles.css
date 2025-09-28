@@ -169,10 +169,3 @@ footer {
     border-radius: 8px; /* Bordes redondeados */
 
 }
-
-.Aceptamos todos los medios de pago {
-    margin-top: 1rem;
-    display: flex; /* Centra horizontalmente */
-    justify-content: center; /* Alinea íconos al centro */
-    align-items: center; /* Alinea horizontalmente */
-    flex-wrap: wrap; /* Permite ajuste en pantallas pequeñas */
