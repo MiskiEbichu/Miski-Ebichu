@@ -53,6 +53,15 @@
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
+                    <ul class="submenu">
+                        <li><a href="#ropa">Ropa</a></li>
+                        <li><a href="#accesorios">Accesorios</a></li>
+                        <li><a href="#kawaii">Kawaii</a></li>
+                        <li><a href="#pantalones">Pantalones</a></li>
+                        <li><a href="#vestidos">Vestidos</a></li>
+                        <li><a href="#polos">Polos</a></li>
+                        <li><a href="#bebe">Bebé</a></li>
+                        </ul>
                 <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -69,29 +78,124 @@
     <!-- Sección de Productos -->
     <section id="productos">
         <h2>Nuestros Productos</h2>
-        <div class="producto">
-            <img src="vestidorojo.jpg" alt="Vestido">
-            <h3>Vestido Rojo</h3>
-            <p>Precio: S/.35.00</p>
-            <button onclick="comprarProducto('Vestido Rojo')">Comprar</button>
+
+             <!-- Subsección Ropa -->
+        <div class="categoria" id="ropa">
+            <h3>Ropa</h3>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Camiseta Clásica">
+                <h4>Camiseta Clásica</h4>
+                <p>Precio: S/.35.00</p>
+                <button onclick="comprarProducto('Camiseta Clásica')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Sudadera">
+                <h4>Sudadera Cómoda</h4>
+                <p>Precio: S/.45.00</p>
+                <button onclick="comprarProducto('Sudadera Cómoda')">Comprar</button>
+            </div>
         </div>
-        <div class="producto">
-            <img src="https://via.placeholder.com/150" alt="Jeans">
-            <h3>Jeans Modernos</h3>
-            <p>Precio: S/.35.00</p>
-            <button onclick="comprarProducto('Jeans Modernos')">Comprar</button>
+
+        <!-- Subsección Accesorios -->
+        <div class="categoria" id="accesorios">
+            <h3>Accesorios</h3>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Collar Kawaii">
+                <h4>Collar Kawaii</h4>
+                <p>Precio: S/.20.00</p>
+                <button onclick="comprarProducto('Collar Kawaii')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Aretes Estrella">
+                <h4>Aretes Estrella</h4>
+                <p>Precio: S/.15.00</p>
+                <button onclick="comprarProducto('Aretes Estrella')">Comprar</button>
+            </div>
         </div>
-        <div class="producto">
-            <img src="https://via.placeholder.com/150" alt="Jeans">
-            <h3>Jeans Modernos</h3>
-            <p>Precio: S/.35.00</p>
-            <button onclick="comprarProducto('Jeans Modernos')">Comprar</button>
+
+        <!-- Subsección Kawaii -->
+        <div class="categoria" id="kawaii">
+            <h3>Kawaii</h3>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Mochila Kawaii">
+                <h4>Mochila Kawaii</h4>
+                <p>Precio: S/.50.00</p>
+                <button onclick="comprarProducto('Mochila Kawaii')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Llavero Gato">
+                <h4>Llavero Gato</h4>
+                <p>Precio: S/.10.00</p>
+                <button onclick="comprarProducto('Llavero Gato')">Comprar</button>
+            </div>
         </div>
-        <div class="producto">
-            <img src="https://via.placeholder.com/150" alt="Chaqueta">
-            <h3>Chaqueta Casual</h3>
-            <p>Precio: S/.50.00</p>
-            <button onclick="comprarProducto('Chaqueta Casual')">Comprar</button>
+
+        <!-- Subsección Pantalones -->
+        <div class="categoria" id="pantalones">
+            <h3>Pantalones</h3>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Jeans Modernos">
+                <h4>Jeans Modernos</h4>
+                <p>Precio: S/.35.00</p>
+                <button onclick="comprarProducto('Jeans Modernos')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Pantalón Cargo">
+                <h4>Pantalón Cargo</h4>
+                <p>Precio: S/.40.00</p>
+                <button onclick="comprarProducto('Pantalón Cargo')">Comprar</button>
+            </div>
+        </div>
+
+        <!-- Subsección Vestidos -->
+        <div class="categoria" id="vestidos">
+            <h3>Vestidos</h3>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Vestido Floral">
+                <h4>Vestido Floral</h4>
+                <p>Precio: S/.55.00</p>
+                <button onclick="comprarProducto('Vestido Floral')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Vestido Kawaii">
+                <h4>Vestido Kawaii</h4>
+                <p>Precio: S/.60.00</p>
+                <button onclick="comprarProducto('Vestido Kawaii')">Comprar</button>
+            </div>
+        </div>
+
+        <!-- Subsección Polos -->
+        <div class="categoria" id="polos">
+            <h3>Polos</h3>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Polo Estampado">
+                <h4>Polo Estampado</h4>
+                <p>Precio: S/.30.00</p>
+                <button onclick="comprarProducto('Polo Estampado')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Polo Básico">
+                <h4>Polo Básico</h4>
+                <p>Precio: S/.25.00</p>
+                <button onclick="comprarProducto('Polo Básico')">Comprar</button>
+            </div>
+        </div>
+
+        <!-- Subsección Bebé -->
+        <div class="categoria" id="bebe">
+            <h3>Bebé</h3>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Body Bebé">
+                <h4>Body Bebé Kawaii</h4>
+                <p>Precio: S/.25.00</p>
+                <button onclick="comprarProducto('Body Bebé Kawaii')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="https://via.placeholder.com/150" alt="Gorro Bebé">
+                <h4>Gorro Bebé</h4>
+                <p>Precio: S/.15.00</p>
+                <button onclick="comprarProducto('Gorro Bebé')">Comprar</button>
+            </div>
         </div>
     </section>
 
