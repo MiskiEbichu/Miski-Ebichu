@@ -175,3 +175,120 @@ document.getElementById('form-pago').addEventListener('submit', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
     actualizarContador();
 });
+
+// Registro e Inicio de Sesión
+function toggleRegister() {
+    const modal = document.getElementById('register');
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleLogin() {
+    const modal = document.getElementById('login');
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
+
+function actualizarEstadoUsuario() {
+    const user = JSON.parse(localStorage.getItem('user')) || auth.currentUser;
+    const userName = document.getElementById('user-name');
+    const btnLogin = document.getElementById('btn-login');
+    const btnRegister = document.getElementById('btn-register');
+    const btnLogout = document.getElementById('btn-logout');
+
+    if (user) {
+        userName.textContent = `Bienvenido, ${user.displayName || user.nombre || 'Usuario'}`;
+        btnLogin.style.display = 'none';
+        btnRegister.style.display = 'none';
+        btnLogout.style.display = 'inline-block';
+    } else {
+        userName.textContent = 'Inicia Sesión';
+        btnLogin.style.display = 'inline-block';
+        btnRegister.style.display = 'inline-block';
+        btnLogout.style.display = 'none';
+    }
+}
+
+document.getElementById('form-register').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('register-nombre').value;
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    if (users.find(u => u.email === email)) {
+        alert('Este correo ya está registrado.');
+        return;
+    }
+    users.push({ nombre, email, password });
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('user', JSON.stringify({ nombre, email }));
+    alert('Registro exitoso. ¡Inicia sesión!');
+    toggleRegister();
+    actualizarEstadoUsuario();
+});
+
+document.getElementById('form-login').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        alert('Inicio de sesión exitoso.');
+        toggleLogin();
+        actualizarEstadoUsuario();
+    } else {
+        alert('Correo o contraseña incorrectos.');
+    }
+});
+
+function loginWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+        .then(result => {
+            localStorage.setItem('user', JSON.stringify({
+                nombre: result.user.displayName,
+                email: result.user.email
+            }));
+            toggleLogin();
+            toggleRegister();
+            actualizarEstadoUsuario();
+            alert('Inicio de sesión con Google exitoso.');
+        })
+        .catch(error => {
+            alert('Error al iniciar con Google: ' + error.message);
+        });
+}
+
+function loginWithFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    auth.signInWithPopup(provider)
+        .then(result => {
+            localStorage.setItem('user', JSON.stringify({
+                nombre: result.user.displayName,
+                email: result.user.email
+            }));
+            toggleLogin();
+            toggleRegister();
+            actualizarEstadoUsuario();
+            alert('Inicio de sesión con Facebook exitoso.');
+        })
+        .catch(error => {
+            alert('Error al iniciar con Facebook: ' + error.message);
+        });
+}
+
+function cerrarSesion() {
+    localStorage.removeItem('user');
+    auth.signOut().then(() => {
+        actualizarEstadoUsuario();
+        alert('Sesión cerrada.');
+    });
+}
+
+// Inicializar al cargar
+document.addEventListener('DOMContentLoaded', function() {
+    actualizarContador();
+    actualizarEstadoUsuario();
+});
