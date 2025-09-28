@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Botón Yape — Paga aquí</title>
+  <style>
+    :root{--accent:#00c2a3;--bg:#5b2270;--card:#fff;--muted:#6b6b6b}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:linear-gradient(180deg,var(--bg) 0%, #4a1b57 100%); color:#222; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px}
+    .card{background:#fff;border-radius:18px;padding:22px;max-width:820px;width:100%;box-shadow:0 10px 30px rgba(0,0,0,.18);display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:center}
+    .left{padding:8px}
+    h1{font-size:20px;margin:0 0 8px}
+    p{margin:0 0 18px;color:var(--muted)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+    .btn.ghost{background:transparent;border:1px solid #eee;color:#222}
+    .share-whatsapp{background:#25D366}
+    .link-box{background:#f6f7f9;border-radius:10px;padding:10px;font-family:monospace;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .small{font-size:13px;color:var(--muted)}
+    .right{text-align:center}
+    .qr{background:#fff;padding:12px;border-radius:12px;display:inline-block}
+    img.qr-img{width:220px;height:220px;display:block}
+    footer{grid-column:1/-1;margin-top:12px;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr;}
+      .right{order:-1}
+      img.qr-img{width:180px;height:180px}
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="left">
+      <h1>Paga a Jheins Miuler Ruiz Facundo</h1>
+      <p class="small">Comparte este enlace para que te paguen con Yape. Incluye botón directo, compartir por WhatsApp, y código QR listo para imprimir o mostrar en pantalla.</p>
+
+      <div class="link-box" style="margin-bottom:12px">
+        <div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">https://yapeapp.pe/990662988</div>
+        <button id="copyBtn" class="btn ghost" title="Copiar enlace">Copiar</button>
+      </div>
+
+      <div class="actions">
+        <a id="openYape" class="btn" href="https://yapeapp.pe/990662988" target="_blank" rel="noopener">Abrir en Yape</a>
+        <a id="whatsappShare" class="btn share-whatsapp" href="https://api.whatsapp.com/send?text=Pagar%20a%20Jheins%20Miuler%20Ruiz%20Facundo%20con%20Yape%20https%3A%2F%2Fyapeapp.pe%2F990662988" target="_blank" rel="noopener">Compartir por WhatsApp</a>
+        <button id="downloadQR" class="btn ghost">Descargar QR</button>
+      </div>
+
+      <div style="margin-top:14px">
+        <div class="small">Sugerencia: pega este enlace en tu perfil de Instagram, Facebook o en tu página web para que los clientes paguen sin escanear.</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="qr" id="qrWrap">
+        <!-- Se usa el generador de QR de Google Charts con tu URL -->
+        <img class="qr-img" id="qrImg" alt="QR Yape" src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=https://yapeapp.pe/990662988" />
+      </div>
+    </div>
+
+    <footer>¿Quieres otro tamaño, otro color o un banner para imprimir? Dime y lo ajusto.</footer>
+  </div>
+
+<script>
+  const url = 'https://yapeapp.pe/990662988';
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    try{
+      await navigator.clipboard.writeText(url);
+      const old = document.getElementById('copyBtn').innerText;
+      document.getElementById('copyBtn').innerText = 'Copiado';
+      setTimeout(()=> document.getElementById('copyBtn').innerText = old, 1500);
+    }catch(e){
+      alert('No se pudo copiar automáticamente. Selecciona y copia manualmente: ' + url);
+    }
+  });
+
+  document.getElementById('downloadQR').addEventListener('click', () => {
+    const img = document.getElementById('qrImg');
+    const link = document.createElement('a');
+    link.href = img.src;
+    link.download = 'yape-990662988-qr.png';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  });
+</script>
+</body>
+</html>
