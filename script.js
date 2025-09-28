@@ -124,11 +124,11 @@ function actualizarDetallesPago() {
     } else if (metodo === 'yape') {
         detallesDiv.innerHTML = `
             <p>Escanea el QR de Yape con tu app.</p>
-            <p>Total a pagar: S/. ${calcularTotal().toFixed(2)} a +51 987654321</p>
+            <p>Total a pagar: S/. ${calcularTotal().toFixed(2)} a +51 990662988</p>
         `;
     } else if (metodo === 'plin') {
         detallesDiv.innerHTML = `
-            <p>Usa Plin para enviar a +51 987654321.</p>
+            <p>Usa Plin para enviar a +51 902023598.</p>
             <p>Total a pagar: S/. ${calcularTotal().toFixed(2)}</p>
         `;
     } else if (metodo === 'mercado-pago') {
@@ -156,9 +156,9 @@ document.getElementById('form-pago').addEventListener('submit', function(e) {
         url = 'https://sandbox.payu.com/'; // Ejemplo; integra API real
         alert('Redirigiendo a pago con tarjeta. Total: S/. ' + total.toFixed(2));
     } else if (metodo === 'yape') {
-        url = 'yape://pay?phone=51987654321&amount=' + total; // Abre app Yape
+        url = 'yape://pay?phone=51990662988&amount=' + total; // Abre app Yape
     } else if (metodo === 'plin') {
-        url = 'https://plin.com/pay?phone=51987654321&amount=' + total; // Simular Plin
+        url = 'https://plin.com/pay?phone=51902023598&amount=' + total; // Simular Plin
     } else if (metodo === 'mercado-pago') {
         url = 'https://www.mercadopago.com.pe/checkout/v1/redirect?pref_id=SIMULADO'; // Integra real
     }
