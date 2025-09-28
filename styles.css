@@ -125,8 +125,8 @@ footer {
 
 /* Estilos para el banner */
 .banner {
-    max-width: 40%; /* No excede el ancho del contenedor */
-    width: 40%; /* Ocupa todo el ancho disponible */
+    max-width: 50%; /* No excede el ancho del contenedor */
+    width: 50%; /* Ocupa todo el ancho disponible */
     height: auto; /* Mantiene proporciones */
     margin: 1rem auto; /* Centrado con margen */
     display: block; /* Asegura que sea un bloque */
