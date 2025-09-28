@@ -1,11 +1,3 @@
-.pagina {
-    margin-top: 1rem;
-    display: flex; /* Centra horizontalmente */
-    justify-content: center; /* Alinea íconos al centro */
-    align-items: center; /* Alinea horizontalmente */
-    flex-wrap: wrap; /* Permite ajuste en pantallas pequeñas */
-} 
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
