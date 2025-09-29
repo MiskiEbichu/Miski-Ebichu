@@ -36,6 +36,51 @@ nav ul li a:hover {
     color: #ffb6c1; /* Rosa suave al hover */
 }
 
+.form-container, #form-register, #form-login {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-container input, .form-container textarea, #form-register input, #form-login input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ffb6c1;
+    border-radius: 4px;
+}
+
+.form-container button, #form-register button, #form-login button {
+    padding: 0.5rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-container button:hover, #form-register button:hover, #form-login button:hover {
+    background-color: #555;
+}
+
+#form-register button[type="button"], #form-login button[type="button"] {
+    background-color: #ffb6c1; /* Rosa suave para botones sociales */
+}
+
+#form-register button[type="button"]:hover, #form-login button[type="button"]:hover {
+    background-color: #ff69b4; /* Rosa fuerte */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+
+}
+
 /* Estilos para el submenú */
 nav ul li .submenu {
     display: none;
@@ -298,49 +343,4 @@ footer {
 
 .producto .btn-adicionar:hover {
     background-color: #800080; /* Morado oscuro */
-}
-
-.form-container, #form-register, #form-login {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.form-container input, .form-container textarea, #form-register input, #form-login input {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ffb6c1;
-    border-radius: 4px;
-}
-
-.form-container button, #form-register button, #form-login button {
-    padding: 0.5rem;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.form-container button:hover, #form-register button:hover, #form-login button:hover {
-    background-color: #555;
-}
-
-#form-register button[type="button"], #form-login button[type="button"] {
-    background-color: #ffb6c1; /* Rosa suave para botones sociales */
-}
-
-#form-register button[type="button"]:hover, #form-login button[type="button"]:hover {
-    background-color: #ff69b4; /* Rosa fuerte */
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    position: relative;
-    width: 100%;
-
 }
