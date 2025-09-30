@@ -87,7 +87,6 @@
                 <h4>Camiseta Clásica</h4>
                 <p>Precio: S/.35.00</p>
                 <button onclick="comprarProducto('Camiseta Clásica')">Comprar</button>
-                <button class="btn-agregar" onclick="agregarAlCarrito('Camiseta Clásica', 35.00)">Agregar al Carrito</button>
            
             </div>
             <div class="producto">
@@ -95,7 +94,7 @@
                 <h4>Sudadera Cómoda</h4>
                 <p>Precio: S/.45.00</p>
                 <button onclick="comprarProducto('Sudadera Cómoda')">Comprar</button>
-                <button class="btn-agregar" onclick="agregarAlCarrito('Sudadera Cómoda', 35.00)">Agregar al Carrito</button>
+        
             </div>
         </div>
 
@@ -107,14 +106,14 @@
                 <h4>Collar Kawaii</h4>
                 <p>Precio: S/.20.00</p>
                 <button onclick="comprarProducto('Collar Kawaii')">Comprar</button>
-                <button class="btn-agregar" onclick="agregarAlCarrito('collar kawaii', 35.00)">Agregar al Carrito</button>
+
             </div>
             <div class="producto">
                 <img src="https://via.placeholder.com/150" alt="Aretes Estrella">
                 <h4>Aretes Estrella</h4>
                 <p>Precio: S/.15.00</p>
                 <button onclick="comprarProducto('Aretes Estrella')">Comprar</button>
-                <button class="btn-agregar" onclick="agregarAlCarrito('Aretes Estrella', 35.00)">Agregar al Carrito</button>
+
             </div>
         </div>
 
@@ -126,14 +125,14 @@
                 <h4>Mochila Kawaii</h4>
                 <p>Precio: S/.50.00</p>
                 <button onclick="comprarProducto('Mochila Kawaii')">Comprar</button>
-                <button class="btn-agregar" onclick="agregarAlCarrito('Mochila Kawaii', 35.00)">Agregar al Carrito</button>
+
             </div>
             <div class="producto">
                 <img src="https://via.placeholder.com/150" alt="Llavero Gato">
                 <h4>Llavero Gato</h4>
                 <p>Precio: S/.10.00</p>
                 <button onclick="comprarProducto('Llavero Gato')">Comprar</button>
-                <button class="btn-agregar" onclick="agregarAlCarrito('Llavero Gato', 35.00)">Agregar al Carrito</button>
+
             </div>
         </div>
 
@@ -145,14 +144,14 @@
                 <h4>Jeans Modernos</h4>
                 <p>Precio: S/.35.00</p>
                 <button onclick="comprarProducto('Jeans Modernos')">Comprar</button>
-                <button class="btn-agregar" onclick="agregarAlCarrito('Jeans Modernos', 35.00)">Agregar al Carrito</button>
+
             </div>
             <div class="producto">
                 <img src="https://via.placeholder.com/150" alt="Pantalón Cargo">
                 <h4>Pantalón Cargo</h4>
                 <p>Precio: S/.40.00</p>
                 <button onclick="comprarProducto('Pantalón Cargo')">Comprar</button>
-                <button class="btn-agregar" onclick="agregarAlCarrito('Pantalón Cargo', 35.00)">Agregar al Carrito</button>
+
             </div>
         </div>
 
@@ -228,44 +227,6 @@
                    </div>
     </section>
 
-    <!-- Carrito Modal -->
-    <div id="carrito" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleCarrito()">&times;</span>
-            <h2>Tu Carrito</h2>
-            <div id="carrito-items"></div>
-            <div id="carrito-total">
-                <p>Total: S/. <span id="total-precio">0.00</span></p>
-            </div>
-            <button onclick="procederAlPago()" id="btn-proceder">Proceder al Pago</button>
-            <button onclick="vaciarCarrito()">Vaciar Carrito</button>
-        </div>
-    </div>
-
-    <!-- Checkout Modal -->
-    <div id="checkout" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleCheckout()">&times;</span>
-            <h2>Finalizar Compra</h2>
-            <form id="form-pago">
-                <label for="nombre-completo">Nombre Completo:</label>
-                <input type="text" id="nombre-completo" required>
-                <label for="email-pago">Correo Electrónico:</label>
-                <input type="email" id="email-pago" required>
-                <label for="metodo-pago">Método de Pago:</label>
-                <select id="metodo-pago" required>
-                    <option value="">Selecciona un método</option>
-                    <option value="tarjeta">Tarjeta de Crédito/Débito (Visa/Mastercard)</option>
-                    <option value="yape">Yape</option>
-                    <option value="plin">Plin</option>
-                    <option value="mercado-pago">Mercado Pago</option>
-                </select>
-                <div id="detalles-pago"></div>
-                <button type="submit">Pagar Ahora</button>
-            </form>
-        </div>
-</div>
-                                          </section>
           <div class="redes-sociales">
             <a href="https://facebook.com/miskiebichu" target="_pink">Facebook</a> |
             <a href="https://instagram.com/miskiebichu" target="_pink">Instagram</a> |
@@ -276,7 +237,7 @@
     <!-- Pie de página -->
     <footer>
         <p>&copy; 2025 Miski Ebichu. Todos los derechos reservados.</p>
-       </footer>
+    </footer>
 
     <script src="script.js"></script>
 </body>
