@@ -59,51 +59,6 @@
         </nav>
     </header>
 
-    <!-- Modal de Registro -->
-    <div id="register" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleRegister()">&times;</span>
-            <h2>Registrarse</h2>
-            <form id="form-register">
-                <label for="register-nombre">Nombre:</label>
-                <input type="text" id="register-nombre" required>
-                <label for="register-email">Correo Electrónico:</label>
-                <input type="email" id="register-email" required>
-                <label for="register-password">Contraseña:</label>
-                <input type="password" id="register-password" required>
-                <button type="submit">Registrarse</button>
-                <p>O regístrate con:</p>
-                <button type="button" onclick="loginWithGoogle()"><i class="fab fa-google"></i> Google</button>
-                <button type="button" onclick="loginWithFacebook()"><i class="fab fa-facebook-f"></i> Facebook</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal de Inicio de Sesión -->
-    <div id="login" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleLogin()">&times;</span>
-            <h2>Iniciar Sesión</h2>
-            <form id="form-login">
-                <label for="login-email">Correo Electrónico:</label>
-                <input type="email" id="login-email" required>
-                <label for="login-password">Contraseña:</label>
-                <input type="password" id="login-password" required>
-                <button type="submit">Iniciar Sesión</button>
-                <p>O inicia sesión con:</p>
-                <button type="button" onclick="loginWithGoogle()"><i class="fab fa-google"></i> Google</button>
-                <button type="button" onclick="loginWithFacebook()"><i class="fab fa-facebook-f"></i> Facebook</button>
-            </form>
-        </div>
-    </div>
-    
-
-    <!-- Botón flotante del carrito -->
-    <div id="carrito-icon" onclick="toggleCarrito()">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="contador-carrito">0</span>
-    </div>
-
     <!-- Sección de Inicio -->
     <section id="inicio">
         <h2>Bienvenidos a Miski Ebichu</h2>
@@ -321,6 +276,8 @@
     <!-- Pie de página -->
     <footer>
         <p>&copy; 2025 Miski Ebichu. Todos los derechos reservados.</p>
-       
+       </footer>
 
-        </div>
+    <script src="script.js"></script>
+</body>
+</html>
