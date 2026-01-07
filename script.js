@@ -1,73 +1,3 @@
-// Registro e Inicio de Sesión
-    users.push({ nombre, email, password });
-    localStorage.setItem('users', JSON.stringify(users));
-    localStorage.setItem('user', JSON.stringify({ nombre, email }));
-    alert('Registro exitoso. ¡Inicia sesión!');
-    toggleRegister();
-    actualizarEstadoUsuario();
-});
-
-document.getElementById('form-login').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-
-    let users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(u => u.email === email && u.password === password);
-    if (user) {
-        localStorage.setItem('user', JSON.stringify(user));
-        alert('Inicio de sesión exitoso.');
-        toggleLogin();
-        actualizarEstadoUsuario();
-    } else {
-        alert('Correo o contraseña incorrectos.');
-    }
-});
-
-function loginWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider)
-        .then(result => {
-            localStorage.setItem('user', JSON.stringify({
-                nombre: result.user.displayName,
-                email: result.user.email
-            }));
-            toggleLogin();
-            toggleRegister();
-            actualizarEstadoUsuario();
-            alert('Inicio de sesión con Google exitoso.');
-        })
-        .catch(error => {
-            alert('Error al iniciar con Google: ' + error.message);
-        });
-}
-
-function loginWithFacebook() {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    auth.signInWithPopup(provider)
-        .then(result => {
-            localStorage.setItem('user', JSON.stringify({
-                nombre: result.user.displayName,
-                email: result.user.email
-            }));
-            toggleLogin();
-            toggleRegister();
-            actualizarEstadoUsuario();
-            alert('Inicio de sesión con Facebook exitoso.');
-        })
-        .catch(error => {
-            alert('Error al iniciar con Facebook: ' + error.message);
-        });
-}
-
-function cerrarSesion() {
-    localStorage.removeItem('user');
-    auth.signOut().then(() => {
-        actualizarEstadoUsuario();
-        alert('Sesión cerrada.');
-    });
-}
-
 // Inicializar al cargar
 document.addEventListener('DOMContentLoaded', function() {
     actualizarContador();
@@ -189,13 +119,6 @@ function toggleCheckout() {
     actualizarDetallesPago();
 }
 
-function actualizarDetallesPago() {
-    const metodo = document.getElementById('metodo-pago').value;
-    const detallesDiv = document.getElementById('detalles-pago');
-    if (metodo === 'tarjeta') {
-        detallesDiv.innerHTML = `
-            <p>Redirigiendo a pasarela segura (Visa/Mastercard via PayU o Stripe).</p>
-            <p>Total a pagar: S/. ${calcularTotal().toFixed(2)}</p>
         `;
     } else if (metodo === 'yape') {
         detallesDiv.innerHTML = `
@@ -205,11 +128,6 @@ function actualizarDetallesPago() {
     } else if (metodo === 'plin') {
         detallesDiv.innerHTML = `
             <p>Usa Plin para enviar a +51 902023598.</p>
-            <p>Total a pagar: S/. ${calcularTotal().toFixed(2)}</p>
-        `;
-    } else if (metodo === 'mercado-pago') {
-        detallesDiv.innerHTML = `
-            <p>Redirigiendo a Mercado Pago.</p>
             <p>Total a pagar: S/. ${calcularTotal().toFixed(2)}</p>
         `;
     } else {
@@ -228,15 +146,10 @@ document.getElementById('form-pago').addEventListener('submit', function(e) {
     const metodo = document.getElementById('metodo-pago').value;
     const total = calcularTotal();
     let url = '';
-    if (metodo === 'tarjeta') {
-        url = 'https://sandbox.payu.com/'; // Ejemplo; integra API real
-        alert('Redirigiendo a pago con tarjeta. Total: S/. ' + total.toFixed(2));
     } else if (metodo === 'yape') {
         url = 'https://yapeapp.pe/990662988' + total; // Abre app Yape
     } else if (metodo === 'plin') {
         url = 'https://plin.com/pay?phone=51902023598&amount=' + total; // Simular Plin
-    } else if (metodo === 'mercado-pago') {
-        url = 'https://www.mercadopago.com.pe/checkout/v1/redirect?pref_id=SIMULADO'; // Integra real
     }
     if (url) {
         window.open(url, '_blank');
