@@ -5,43 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Tienda virtual Miski Ebichu: ropa, accesorios y productos kawaii en Perú">
   <title>Miski Ebichu</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-  <a href="https://wa.me/51990662988" class="whatsapp-float" target="_blank">💬</a>
 
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Iconos (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 <body>
 
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/51990662988" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ENCABEZADO -->
 <header>
   <h1>Miski Ebichu</h1>
   <nav>
     <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
       <li class="carrito-icono">🛒 <span id="contador-carrito">0</span></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- CARRITO -->
 <section id="carrito">
   <h2>Tu Carrito</h2>
   <ul id="lista-carrito"></ul>
 </section>
 
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#productos">Productos</a></li>
-      <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-</header>
-
+<!-- INICIO -->
 <section id="inicio">
   <h2>Bienvenidos a Miski Ebichu</h2>
-  <img src="logo-kawaii.jpg" alt="Banner Miski Ebichu" class="banner">
+  <img src="logo-kawaii.jpg" alt="Logo Miski Ebichu" class="banner">
   <p>Descubre las últimas tendencias en accesorios kawaii, ropa y más.</p>
 </section>
 
+<!-- PRODUCTOS -->
 <section id="productos">
   <h2>Nuestros Productos</h2>
 
-  <div class="categoria" id="ropas de dama">
-    <h3>Ropas de Dama</h3>
+  <div class="categoria" id="ropa-dama">
+    <h3>Ropa de Dama</h3>
     <div class="producto">
-      <img src="https://via.placeholder.com/150" alt="vestido largo">
+      <img src="https://via.placeholder.com/150" alt="Vestido largo">
       <h4>Vestido Largo</h4>
       <p>S/. 60.00</p>
       <button onclick="comprarProducto('Vestido Largo')">Comprar</button>
@@ -61,7 +73,7 @@
   <div class="categoria" id="kawaii">
     <h3>Kawaii</h3>
     <div class="producto">
-      <img src="https://via.placeholder.com/150" alt="Llavero Gato">
+      <img src="https://via.placeholder.com/150" alt="Llavero gato">
       <h4>Llavero Gato</h4>
       <p>S/. 10.00</p>
       <button onclick="comprarProducto('Llavero Gato')">Comprar</button>
@@ -71,7 +83,7 @@
   <div class="categoria" id="bebe">
     <h3>Bebé</h3>
     <div class="producto">
-      <img src="https://via.placeholder.com/150" alt="Body Bebé">
+      <img src="https://via.placeholder.com/150" alt="Body bebé kawaii">
       <h4>Body Bebé Kawaii</h4>
       <p>S/. 25.00</p>
       <button onclick="comprarProducto('Body Bebé Kawaii')">Comprar</button>
@@ -79,15 +91,17 @@
   </div>
 </section>
 
+<!-- SOBRE NOSOTROS -->
 <section id="sobre-nosotros">
   <h2>Sobre Nosotros</h2>
   <p>Somos una tienda virtual dedicada a productos kawaii, ropa y accesorios con estilo único.</p>
 </section>
 
+<!-- CONTACTO -->
 <section id="contacto">
   <h2>Contáctanos</h2>
-  <p>WhatsApp: <a href="https://wa.me/51990662988" target="_blank">+51 990 662 988</a></p>
-  <p>Correo: contacto@miskiebichu.com</p>
+  <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51990662988" target="_blank">+51 990 662 988</a></p>
+  <p><i class="fas fa-envelope"></i> contacto@miskiebichu.com</p>
 
   <div class="form-container">
     <input type="text" id="nombre" placeholder="Nombre">
@@ -97,6 +111,17 @@
   </div>
 </section>
 
+<!-- REDES SOCIALES -->
+<section id="redes">
+  <h2>Síguenos</h2>
+  <div class="redes-sociales">
+    <a href="https://facebook.com/miskiebichu" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/miskiebichu" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://tiktok.com/@miskiebichu" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <p>&copy; 2026 Miski Ebichu. Todos los derechos reservados.</p>
 </footer>
@@ -104,3 +129,60 @@
 <script src="script.js"></script>
 </body>
 </html>
+
+/* REDES SOCIALES */
+#redes {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.redes-sociales {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.redes-sociales a {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ff5fa2;
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.redes-sociales a:hover {
+  transform: translateY(-6px) scale(1.1);
+  background: #ff3c90;
+}
+
+/* Botón flotante WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  text-decoration: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
