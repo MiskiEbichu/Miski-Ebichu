@@ -1,282 +1,98 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miski Ebichu</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tienda virtual Miski Ebichu: ropa, accesorios y productos kawaii en Perú">
+  <title>Miski Ebichu</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Encabezado -->
-    <header>
-        <h1>Miski Ebichu</h1>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Sección de Inicio -->
-    <section id="inicio">
-        <h2>Bienvenidos a Miski Ebichu</h2>
-        <img src="logo-kawaii.jpg" alt="Banner Miski Ebichu" class="banner">
-        <p>Descubre las últimas tendencias en accesorios kawaii, ropa para todos los estilos y más.</p>
-    </section>
+<header>
+  <h1>Miski Ebichu</h1>
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <!-- Sección de Productos -->
-    <section id="productos">
-        <h2>Nuestros Productos</h2>
-             <ul class="submenu">
-                        <li><a href="#ropa de damas">Ropa de Damas</a></li>
-                        <li><a href="#accesorios">Accesorios</a></li>
-                        <li><a href="#kawaii">Kawaii</a></li>
-                        <li><a href="#maquillaje">Maquillaje</a></li>
-                        <li><a href="#bebe">Bebé</a></li>
-               </ul>
-        
-             <!-- Sección Ropa -->
-        <div class="categoria" id="ropa">
-            <h3>Ropa</h3>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Camiseta Clásica">
-                <h4>Camiseta Clásica</h4>
-                <p>Precio: S/.35.00</p>
-                <button onclick="comprarProducto('Camiseta Clásica')">Comprar</button>
-           
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Sudadera">
-                <h4>Sudadera Cómoda</h4>
-                <p>Precio: S/.45.00</p>
-                <button onclick="comprarProducto('Sudadera Cómoda')">Comprar</button>
-        
-            </div>
-        </div>
+<section id="inicio">
+  <h2>Bienvenidos a Miski Ebichu</h2>
+  <img src="logo-kawaii.jpg" alt="Banner Miski Ebichu" class="banner">
+  <p>Descubre las últimas tendencias en accesorios kawaii, ropa y más.</p>
+</section>
 
-        <!-- Subsección Carteras -->
-        <div class="categoria" id="carteras">
-            <h3>Carteras</h3>
-            <div class="producto">
-                <img src="cartera_corazon.jpg" alt="Cartera Kawaii Corazón">
-                <h4>Cartera Kawaii Corazón</h4>
-                <p>Precio: S/.50.00</p>
-                <button onclick="comprarProducto('CCartera Kawaii Corazón')">Comprar</button>
+<section id="productos">
+  <h2>Nuestros Productos</h2>
 
-            </div>
-            <div class="producto">
-                <img src="cartera_tres_espacios.jpg" alt="Cartera Tres Espacios">
-                <h4>Cartera Tres Espacios</h4>
-                <p>Precio: S/.110.00</p>
-                <button onclick="comprarProducto('Cartera Tres Espacios')">Comprar</button>
+  <div class="categoria" id="ropa">
+    <h3>Ropa</h3>
+    <div class="producto">
+      <img src="https://via.placeholder.com/150" alt="Camiseta Clásica">
+      <h4>Camiseta Clásica</h4>
+      <p>S/. 35.00</p>
+      <button onclick="comprarProducto('Camiseta Clásica')">Comprar</button>
+    </div>
+  </div>
 
-            </div>
-            <div class="producto">
-                <img src="mochila_kawaii.jpg" alt="Mochila Kawaii">
-                <h4>Mochila Kawaii</h4>
-                <p>Precio: S/.55.00</p>
-                <button onclick="comprarProducto('Mochila Kawaii')">Comprar</button>
+  <div class="categoria" id="accesorios">
+    <h3>Accesorios</h3>
+    <div class="producto">
+      <img src="https://via.placeholder.com/150" alt="Collar Kawaii">
+      <h4>Collar Kawaii</h4>
+      <p>S/. 20.00</p>
+      <button onclick="comprarProducto('Collar Kawaii')">Comprar</button>
+    </div>
+  </div>
 
-             </div>
-            <div class="producto">
-                <img src="morral_grenobil.jpg" alt="Morral Grenobil">
-                <h4>Morral Grenobil</h4>
-                <p>Precio: S/.48.00</p>
-                <button onclick="comprarProducto('Morral Grenobil')">Comprar</button>
-               
-             </div>
-            <div class="producto">
-                <img src="morral_porta_celular.jpg" alt="Morral Porta Celular">
-                <h4>Morral Porta Celular</h4>
-                <p>Precio: S/.45.00</p>
-                <button onclick="comprarProducto('Morral Porta Celular')">Comprar</button>
-          </div>
-        </div>
+  <div class="categoria" id="kawaii">
+    <h3>Kawaii</h3>
+    <div class="producto">
+      <img src="https://via.placeholder.com/150" alt="Llavero Gato">
+      <h4>Llavero Gato</h4>
+      <p>S/. 10.00</p>
+      <button onclick="comprarProducto('Llavero Gato')">Comprar</button>
+    </div>
+  </div>
 
-        <!-- Subsección Accesorios -->
-        <div class="categoria" id="accesorios">
-            <h3>Accesorios</h3>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Collar Kawaii">
-                <h4>Collar Kawaii</h4>
-                <p>Precio: S/.20.00</p>
-                <button onclick="comprarProducto('Collar Kawaii')">Comprar</button>
+  <div class="categoria" id="bebe">
+    <h3>Bebé</h3>
+    <div class="producto">
+      <img src="https://via.placeholder.com/150" alt="Body Bebé">
+      <h4>Body Bebé Kawaii</h4>
+      <p>S/. 25.00</p>
+      <button onclick="comprarProducto('Body Bebé Kawaii')">Comprar</button>
+    </div>
+  </div>
+</section>
 
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Aretes Estrella">
-                <h4>Aretes Estrella</h4>
-                <p>Precio: S/.15.00</p>
-                <button onclick="comprarProducto('Aretes Estrella')">Comprar</button>
+<section id="sobre-nosotros">
+  <h2>Sobre Nosotros</h2>
+  <p>Somos una tienda virtual dedicada a productos kawaii, ropa y accesorios con estilo único.</p>
+</section>
 
+<section id="contacto">
+  <h2>Contáctanos</h2>
+  <p>WhatsApp: <a href="https://wa.me/51990662988" target="_blank">+51 990 662 988</a></p>
+  <p>Correo: contacto@miskiebichu.com</p>
 
-            </div>
-        </div>
+  <div class="form-container">
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="email" id="email" placeholder="Correo">
+    <textarea id="mensaje" placeholder="Mensaje"></textarea>
+    <button onclick="enviarFormulario()">Enviar</button>
+  </div>
+</section>
 
-        <!-- Subsección Kawaii -->
-        <div class="categoria" id="kawaii">
-            <h3>Kawaii</h3>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Mochila Kawaii">
-                <h4>Mochila Kawaii</h4>
-                <p>Precio: S/.50.00</p>
-                <button onclick="comprarProducto('Mochila Kawaii')">Comprar</button>
+<footer>
+  <p>&copy; 2026 Miski Ebichu. Todos los derechos reservados.</p>
+</footer>
 
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Llavero Gato">
-                <h4>Llavero Gato</h4>
-                <p>Precio: S/.10.00</p>
-                <button onclick="comprarProducto('Llavero Gato')">Comprar</button>
-
-            </div>
-        </div>
-
-        <!-- Subsección Maquillaje -->
-        <div class="categoria" id="maquillaje">
-            <h3>Maquillaje</h3>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Jeans Modernos">
-                <h4>Jeans Modernos</h4>
-                <p>Precio: S/.35.00</p>
-                <button onclick="comprarProducto('Jeans Modernos')">Comprar</button>
-
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Pantalón Cargo">
-                <h4>Pantalón Cargo</h4>
-                <p>Precio: S/.40.00</p>
-                <button onclick="comprarProducto('Pantalón Cargo')">Comprar</button>
-
-            </div>
-        </div>
-
-        <!-- Subsección Vestidos -->
-        <div class="categoria" id="vestidos">
-            <h3>Vestidos</h3>
-            <div class="producto">
-                <img src="vestidorojo.jpg" alt="Vestido Strapless">
-                <h4>Vestido Strapless</h4>
-                <p>Precio: S/.85.00</p>
-                <button onclick="comprarProducto('Vestido Strapless')">Comprar</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Vestido Kawaii">
-                <h4>Vestido Kawaii</h4>
-                <p>Precio: S/.60.00</p>
-                <button onclick="comprarProducto('Vestido Kawaii')">Comprar</button>
-            </div>
-        </div>
-
-        <!-- Subsección Polos -->
-        <div class="categoria" id="polos">
-            <h3>Polos</h3>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Polo Estampado">
-                <h4>Polo Estampado</h4>
-                <p>Precio: S/.30.00</p>
-                <button onclick="comprarProducto('Polo Estampado')">Comprar</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Polo Básico">
-                <h4>Polo Básico</h4>
-                <p>Precio: S/.25.00</p>
-                <button onclick="comprarProducto('Polo Básico')">Comprar</button>
-            </div>
-        </div>
-
-        <!-- Subsección Bebé -->
-        <div class="categoria" id="bebe">
-            <h3>Bebé</h3>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Body Bebé">
-                <h4>Body Bebé Kawaii</h4>
-                <p>Precio: S/.25.00</p>
-                <button onclick="comprarProducto('Body Bebé Kawaii')">Comprar</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Gorro Bebé">
-                <h4>Gorro Bebé</h4>
-                <p>Precio: S/.15.00</p>
-                <button onclick="comprarProducto('Gorro Bebé')">Comprar</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Sobre Nosotros -->
-    <section id="sobre-nosotros">
-        <h2>Sobre Nosotros</h2>
-        <p>Somos una tienda virtual dedicada a ofrecer productos kawaii, accesorios, ropa de calidad con estilo único y más. Nuestra misión es que te sientas cómodo y a la moda.</p>
-    </section>
-
-    <!-- Sección de Contacto -->
-    <section id="contacto">
-        <h2>Contáctanos</h2>
-        <p>Celular: +51 990662988</p>
-        <p>WhatsApp: <a href="https://wa.me/51990662988?text=Hola%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Miski%20Ebichu" target="_blank"><i class="fab fa-whatsapp"></i> +51 990662988</a></p>
-        <p>Correo: elizacp9815@gmail.com</p>
-        <div class="form-container">
-            <input type="text" id="nombre" placeholder="Nombre" required>
-            <input type="email" id="email" placeholder="Correo Electrónico" required>
-            <textarea id="mensaje" placeholder="Mensaje" required></textarea>
-            <button onclick="enviarFormulario()">Enviar</button>
-                   </div>
-    </section>
-
-          <div class="redes-sociales">
-            <a href="https://facebook.com/miskiebichu" target="_pink">Facebook</a> |
-            <a href="https://instagram.com/miskiebichu" target="_pink">Instagram</a> |
-            <a href="https://tiktok.com/@miskiebichu" target="_pink">TikTok</a> |
-            <a href="https://wa.me/51990662988?text=Hola%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Miski%20Ebichu" target="_pink"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-
-            <p>Aceptamos todos los medios de pago.</p>
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2026 Miski Ebichu. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
