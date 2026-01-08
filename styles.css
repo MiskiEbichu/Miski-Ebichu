@@ -1,7 +1,74 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* GENERAL */
 body {
-  background: #fff6fb;
   font-family: 'Segoe UI', sans-serif;
+  background: #fff6fb;
   color: #444;
+  text-align: center;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #ff9acb, #ffc2dd);
+  padding: 20px;
+}
+
+header h1 {
+  color: white;
+  font-size: 2.2rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* SECCIONES */
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* PRODUCTOS */
+.categoria {
+  margin-bottom: 40px;
+}
+
+.producto {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  padding: 15px;
+  width: 240px;
+  margin: 15px auto;
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.acciones-producto {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 button {
@@ -11,46 +78,37 @@ button {
   padding: 8px 14px;
   border-radius: 20px;
   cursor: pointer;
-  margin: 5px;
 }
 
 button:hover {
   background: #ff5fa2;
 }
 
-/* WhatsApp flotante */
-.whatsapp-float {
+/* BOTONES FLOTANTES */
+.whatsapp-float,
+.carrito-float {
   position: fixed;
-  bottom: 20px;
   right: 20px;
-  background: #25D366;
-  color: white;
   width: 55px;
   height: 55px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
+  font-size: 24px;
+  color: white;
   z-index: 1000;
 }
 
-/* Carrito flotante */
+.whatsapp-float {
+  bottom: 20px;
+  background: #25D366;
+}
+
 .carrito-float {
-  position: fixed;
   bottom: 90px;
-  right: 20px;
   background: #ff5fa2;
-  color: white;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 1000;
+  border: none;
 }
 
 .carrito-float span {
@@ -64,23 +122,24 @@ button:hover {
   height: 22px;
   border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   font-weight: bold;
 }
 
-/* Panel carrito */
+/* PANEL CARRITO */
 #panel-carrito {
   position: fixed;
   top: 0;
   right: -380px;
   width: 360px;
   height: 100%;
-  background: #fff;
-  box-shadow: -4px 0 15px rgba(0,0,0,0.15);
+  background: white;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.15);
   padding: 20px;
   transition: 0.3s;
   z-index: 2000;
+  text-align: left;
 }
 
 #panel-carrito h2 {
@@ -89,14 +148,14 @@ button:hover {
 }
 
 .cerrar-carrito {
-  font-size: 26px;
-  cursor: pointer;
   position: absolute;
-  top: 15px;
-  right: 20px;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-/* Item carrito */
+/* ITEM CARRITO */
 .item-carrito {
   display: flex;
   align-items: center;
@@ -107,8 +166,7 @@ button:hover {
 }
 
 .item-carrito img {
-  width: 50px;
-  height: 50px;
+  width: 45px;
   border-radius: 10px;
 }
 
@@ -119,39 +177,46 @@ button:hover {
 
 .item-carrito button {
   background: none;
+  color: #ff5fa2;
   font-size: 18px;
 }
 
-/* Total */
+/* TOTAL */
 #total-carrito {
-  margin-top: 10px;
   font-weight: bold;
   text-align: center;
+  margin: 10px 0;
 }
 
-/* WhatsApp botón */
+/* BOTÓN WHATSAPP */
 #btn-whatsapp {
   display: block;
   text-align: center;
   background: #25D366;
   color: white;
-  padding: 10px;
+  padding: 12px;
   border-radius: 25px;
-  margin-top: 15px;
   text-decoration: none;
 }
 
-/* Productos */
-.producto {
-  background: white;
-  border-radius: 18px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  padding: 15px;
-  display: inline-block;
-  margin: 10px;
-  text-align: center;
+/* REDES */
+.redes-sociales a {
+  font-size: 26px;
+  margin: 0 10px;
+  color: #ff7abf;
 }
 
-.producto img {
-  border-radius: 15px;
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  .producto {
+    width: 90%;
+  }
+
+  #panel-carrito {
+    width: 100%;
+  }
 }
