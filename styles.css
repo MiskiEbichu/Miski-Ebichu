@@ -371,3 +371,40 @@ footer {
     width: 90%;
   }
 }
+.metodos-pago {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.metodos-pago p {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ff5fa2;
+}
+
+.btn-yape,
+.btn-plin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 25px;
+  font-size: 16px;
+}
+
+.btn-yape {
+  background: #7b1fa2;
+}
+
+.btn-plin {
+  background: #00c853;
+}
+
+.btn-yape img,
+.btn-plin img {
+  width: 30px;
+  height: auto;
+}
