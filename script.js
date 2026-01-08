@@ -152,3 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
 <span id="contador-carrito">0</span>
 <div id="carrito-items"></div>
 <strong>Total: S/. <span id="total-precio">0.00</span></strong>
+
+    <div class="carrito-float" onclick="enviarCarritoWhatsApp()">
+function enviarCarritoWhatsApp() {
+  const mensaje = `Hola, quiero hacer un pedido:%0A- ${carrito.join('%0A- ')}`;
+  window.open(`https://wa.me/51990662988?text=${mensaje}`, '_blank');
+}
+<button onclick="comprarYEnviar('Vestido Largo')">Comprar</button>
+function comprarYEnviar(producto) {
+  const mensaje = `Hola, quiero comprar: ${producto}`;
+  window.open(`https://wa.me/51990662988?text=${mensaje}`, '_blank');
+}
