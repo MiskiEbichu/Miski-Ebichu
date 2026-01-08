@@ -6,38 +6,39 @@
   <meta name="description" content="Tienda virtual Miski Ebichu: ropa, accesorios y productos kawaii en Perú">
   <title>Miski Ebichu</title>
 
-  <!-- Estilos -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Iconos (Font Awesome) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-<!-- Botón flotante WhatsApp -->
-<a href="https://wa.me/51990662988" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/51990662988"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 
 <!-- Carrito flotante -->
-<div class="carrito-float" onclick="toggleCarrito()">
+<button class="carrito-float" onclick="toggleCarrito()" aria-label="Abrir carrito">
   <i class="fas fa-shopping-cart"></i>
   <span id="contador-carrito">0</span>
-</div>
+</button>
 
-<!-- Panel del carrito -->
-<div id="panel-carrito">
-  <span class="cerrar-carrito" onclick="toggleCarrito()">&times;</span>
-  <h2>Mi Carrito</h2>
+<!-- Panel carrito -->
+<aside id="panel-carrito" aria-labelledby="titulo-carrito">
+  <span class="cerrar-carrito" onclick="toggleCarrito()" aria-label="Cerrar carrito">&times;</span>
+  <h2 id="titulo-carrito">Mi Carrito</h2>
   <div id="lista-carrito"></div>
   <div id="total-carrito">Total: S/. 0.00</div>
-  <a href="#" id="btn-whatsapp" onclick="finalizarCompra(); return false;">Finalizar compra por WhatsApp</a>
-</div>
+  <a href="#" id="btn-whatsapp" onclick="finalizarCompra(); return false;">
+    Finalizar compra por WhatsApp
+  </a>
+</aside>
 
-<!-- ENCABEZADO -->
 <header>
   <h1>Miski Ebichu</h1>
-  <nav>
+  <nav aria-label="Menú principal">
     <ul>
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#productos">Productos</a></li>
@@ -47,100 +48,63 @@
   </nav>
 </header>
 
-<!-- INICIO -->
+<main>
+
 <section id="inicio">
   <h2>Bienvenidos a Miski Ebichu</h2>
   <img src="logo-kawaii.jpg" alt="Logo Miski Ebichu" class="banner">
   <p>Descubre las últimas tendencias en accesorios kawaii, ropa y más.</p>
 </section>
 
-<!-- PRODUCTOS -->
 <section id="productos">
   <h2>Nuestros Productos</h2>
 
-  <div class="categoria" id="ropa-dama">
+  <div class="categoria">
     <h3>Ropa de Dama</h3>
-    <div class="producto">
-      <img src="https://via.placeholder.com/150" alt="Vestido largo">
+
+    <article class="producto">
+      <img src="https://via.placeholder.com/150" alt="Vestido Largo">
       <h4>Vestido Largo</h4>
       <p>S/. 60.00</p>
-      <button onclick="agregarAlCarrito('Vestido Largo', 60, 'https://via.placeholder.com/150')">
-        Agregar al carrito
-      </button>
-      <button onclick="comprarDirecto('Vestido Largo', 60)">
-        Comprar
-      </button>
-    </div>
+
+      <div class="acciones-producto">
+        <button class="btn-carrito"
+          onclick="agregarAlCarrito('Vestido Largo', 60, 'https://via.placeholder.com/150')">
+          Agregar
+        </button>
+
+        <button class="btn-comprar"
+          onclick="comprarDirecto('Vestido Largo', 60)">
+          Comprar
+        </button>
+      </div>
+    </article>
   </div>
 
-  <div class="categoria" id="maquillaje">
-    <h3>Maquillaje</h3>
-    <div class="producto">
-      <img src="https://via.placeholder.com/150" alt="Labial">
-      <h4>Labial</h4>
-      <p>S/. 20.00</p>
-      <button onclick="agregarAlCarrito('Labial', 20, 'https://via.placeholder.com/150')">
-        Agregar al carrito
-      </button>
-    </div>
-  </div>
-
-  <div class="categoria" id="kawaii">
-    <h3>Kawaii</h3>
-    <div class="producto">
-      <img src="https://via.placeholder.com/150" alt="Llavero gato">
-      <h4>Llavero Gato</h4>
-      <p>S/. 10.00</p>
-      <button onclick="agregarAlCarrito('Llavero Gato', 10, 'https://via.placeholder.com/150')">
-        Agregar al carrito
-      </button>
-    </div>
-  </div>
-
-  <div class="categoria" id="bebe">
-    <h3>Bebé</h3>
-    <div class="producto">
-      <img src="https://via.placeholder.com/150" alt="Body bebé kawaii">
-      <h4>Body Bebé Kawaii</h4>
-      <p>S/. 25.00</p>
-      <button onclick="agregarAlCarrito('Body Bebé Kawaii', 25, 'https://via.placeholder.com/150')">
-        Agregar al carrito
-      </button>
-    </div>
-  </div>
 </section>
 
-<!-- SOBRE NOSOTROS -->
 <section id="sobre-nosotros">
   <h2>Sobre Nosotros</h2>
   <p>Somos una tienda virtual dedicada a productos kawaii, ropa y accesorios con estilo único.</p>
 </section>
 
-<!-- CONTACTO -->
 <section id="contacto">
   <h2>Contáctanos</h2>
   <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51990662988" target="_blank">+51 990 662 988</a></p>
   <p><i class="fas fa-envelope"></i> contacto@miskiebichu.com</p>
-
-  <div class="form-container">
-    <input type="text" id="nombre" placeholder="Nombre">
-    <input type="email" id="email" placeholder="Correo">
-    <textarea id="mensaje" placeholder="Mensaje"></textarea>
-    <button onclick="enviarFormulario()">Enviar</button>
-  </div>
 </section>
 
-<!-- REDES SOCIALES -->
 <section id="redes">
   <h2>Síguenos</h2>
   <div class="redes-sociales">
-    <a href="https://facebook.com/miskiebichu" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://instagram.com/miskiebichu" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://tiktok.com/@miskiebichu" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
 <footer>
   <p>&copy; 2026 Miski Ebichu. Todos los derechos reservados.</p>
 </footer>
