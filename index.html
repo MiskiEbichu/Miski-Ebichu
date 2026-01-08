@@ -19,9 +19,19 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<div class="carrito-float" onclick="abrirCarrito()">
+<!-- Carrito flotante -->
+<div class="carrito-float" onclick="toggleCarrito()">
   <i class="fas fa-shopping-cart"></i>
   <span id="contador-carrito">0</span>
+</div>
+
+<!-- Panel del carrito -->
+<div id="panel-carrito">
+  <span class="cerrar-carrito" onclick="toggleCarrito()">&times;</span>
+  <h2>Mi Carrito</h2>
+  <div id="lista-carrito"></div>
+  <div id="total-carrito">Total: S/. 0.00</div>
+  <a href="#" id="btn-whatsapp" onclick="finalizarCompra(); return false;">Finalizar compra por WhatsApp</a>
 </div>
 
 <!-- ENCABEZADO -->
@@ -51,18 +61,16 @@
   <div class="categoria" id="ropa-dama">
     <h3>Ropa de Dama</h3>
     <div class="producto">
-  <img src="https://via.placeholder.com/150" alt="Vestido largo">
-  <h4>Vestido Largo</h4>
-  <p>S/. 60.00</p>
-
-  <button onclick="agregarAlCarrito('Vestido Largo', 60)">
-    Agregar al carrito
-  </button>
-
-  <button onclick="comprarDirecto('Vestido Largo', 60)">
-    Comprar
-  </button>
-</div>
+      <img src="https://via.placeholder.com/150" alt="Vestido largo">
+      <h4>Vestido Largo</h4>
+      <p>S/. 60.00</p>
+      <button onclick="agregarAlCarrito('Vestido Largo', 60, 'https://via.placeholder.com/150')">
+        Agregar al carrito
+      </button>
+      <button onclick="comprarDirecto('Vestido Largo', 60)">
+        Comprar
+      </button>
+    </div>
   </div>
 
   <div class="categoria" id="maquillaje">
@@ -71,7 +79,9 @@
       <img src="https://via.placeholder.com/150" alt="Labial">
       <h4>Labial</h4>
       <p>S/. 20.00</p>
-      <button onclick="comprarProducto('Labial')">Comprar</button>
+      <button onclick="agregarAlCarrito('Labial', 20, 'https://via.placeholder.com/150')">
+        Agregar al carrito
+      </button>
     </div>
   </div>
 
@@ -81,7 +91,9 @@
       <img src="https://via.placeholder.com/150" alt="Llavero gato">
       <h4>Llavero Gato</h4>
       <p>S/. 10.00</p>
-      <button onclick="comprarProducto('Llavero Gato')">Comprar</button>
+      <button onclick="agregarAlCarrito('Llavero Gato', 10, 'https://via.placeholder.com/150')">
+        Agregar al carrito
+      </button>
     </div>
   </div>
 
@@ -91,7 +103,9 @@
       <img src="https://via.placeholder.com/150" alt="Body bebé kawaii">
       <h4>Body Bebé Kawaii</h4>
       <p>S/. 25.00</p>
-      <button onclick="comprarProducto('Body Bebé Kawaii')">Comprar</button>
+      <button onclick="agregarAlCarrito('Body Bebé Kawaii', 25, 'https://via.placeholder.com/150')">
+        Agregar al carrito
+      </button>
     </div>
   </div>
 </section>
