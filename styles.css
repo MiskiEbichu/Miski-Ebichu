@@ -408,3 +408,22 @@ footer {
   width: 30px;
   height: auto;
 }
+.contenedor {
+  display: flex;
+  gap: 20px;              /* espacio entre secciones */
+  justify-content: center;
+  flex-wrap: wrap;        /* se adapta a celular */
+}
+
+.card {
+  background: #ffe6f0;
+  padding: 20px;
+  border-radius: 15px;
+  width: 250px;
+  text-align: center;
+}
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
