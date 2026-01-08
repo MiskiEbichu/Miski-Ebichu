@@ -1,63 +1,103 @@
-let carrito = [];
+// Carrito en localStorage para persistencia
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-// AGREGAR AL CARRITO
-function agregarAlCarrito(nombre, precio) {
-  carrito.push({ nombre, precio });
+function actualizarContador() {
+  const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+  document.getElementById('contador-carrito').textContent = totalItems;
+  actualizarPanelCarrito();
+}
+
+function agregarAlCarrito(nombre, precio, imagen) {
+  const existente = carrito.find(item => item.nombre === nombre);
+  if (existente) {
+    existente.cantidad += 1;
+  } else {
+    carrito.push({ nombre, precio, imagen, cantidad: 1 });
+  }
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarContador();
+  alert(`${nombre} agregado al carrito`);
+}
+
+function cambiarCantidad(index, cambio) {
+  carrito[index].cantidad += cambio;
+  if (carrito[index].cantidad <= 0) {
+    carrito.splice(index, 1);
+  }
+  localStorage.setItem('carrito', JSON.stringify(carrito));
   actualizarContador();
 }
 
-// ACTUALIZAR CONTADOR
-function actualizarContador() {
-  document.getElementById('contador-carrito').textContent = carrito.length;
+function quitarDelCarrito(index) {
+  carrito.splice(index, 1);
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarContador();
 }
 
-// COMPRAR DIRECTO
-function comprarDirecto(nombre, precio) {
-  const mensaje = `Hola, quiero comprar:%0A- ${nombre} (S/. ${precio})`;
-  window.open(`https://wa.me/51990662988?text=${mensaje}`, '_blank');
-}
-
-// ABRIR CARRITO
-function abrirCarrito() {
-  const modal = document.getElementById('modal-carrito');
+function actualizarPanelCarrito() {
   const lista = document.getElementById('lista-carrito');
   lista.innerHTML = '';
 
-  carrito.forEach((p, index) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      ${p.nombre} - S/. ${p.precio}
-      <button onclick="eliminarProducto(${index})">❌</button>
+  if (carrito.length === 0) {
+    lista.innerHTML = '<p class="vacío">El carrito está vacío</p>';
+    document.getElementById('total-carrito').textContent = 'Total: S/. 0.00';
+    return;
+  }
+
+  let total = 0;
+  carrito.forEach((item, index) => {
+    const subtotal = item.precio * item.cantidad;
+    total += subtotal;
+
+    const div = document.createElement('div');
+    div.className = 'item-carrito';
+    div.innerHTML = `
+      <img src="${item.imagen}" alt="${item.nombre}">
+      <div class="detalles-item">
+        <strong>${item.nombre}</strong><br>
+        S/. ${item.precio.toFixed(2)} x ${item.cantidad} = S/. ${subtotal.toFixed(2)}
+        <div class="cantidad">
+          <button onclick="cambiarCantidad(${index}, -1)">-</button>
+          <span>${item.cantidad}</span>
+          <button onclick="cambiarCantidad(${index}, 1)">+</button>
+        </div>
+      </div>
+      <button class="quitar-item" onclick="quitarDelCarrito(${index})">Quitar</button>
     `;
-    lista.appendChild(li);
+    lista.appendChild(div);
   });
 
-  modal.style.display = 'block';
+  document.getElementById('total-carrito').textContent = `Total: S/. ${total.toFixed(2)}`;
 }
 
-// ❌ ELIMINAR PRODUCTO
-function eliminarProducto(index) {
-  carrito.splice(index, 1);
-  actualizarContador();
-  abrirCarrito(); // refresca la lista
+function toggleCarrito() {
+  const panel = document.getElementById('panel-carrito');
+  panel.classList.toggle('abierto');
+  if (panel.classList.contains('abierto')) {
+    actualizarPanelCarrito();
+  }
 }
 
-// CERRAR CARRITO
-function cerrarCarrito() {
-  document.getElementById('modal-carrito').style.display = 'none';
-}
-
-// ENVIAR CARRITO A WHATSAPP
-function enviarCarritoWhatsApp() {
+function finalizarCompra() {
   if (carrito.length === 0) {
     alert('El carrito está vacío');
     return;
   }
 
-  let mensaje = 'Hola, quiero hacer el siguiente pedido:%0A';
-  carrito.forEach(p => {
-    mensaje += `- ${p.nombre} (S/. ${p.precio})%0A`;
+  let mensaje = "¡Hola! Quiero hacer el siguiente pedido:%0A%0A";
+  let total = 0;
+
+  carrito.forEach(item => {
+    const subtotal = item.precio * item.cantidad;
+    total += subtotal;
+    mensaje += `• ${item.nombre} x${item.cantidad} = S/. ${subtotal.toFixed(2)}%0A`;
   });
 
-  window.open(`https://wa.me/51990662988?text=${mensaje}`, '_blank');
+  mensaje += `%0ATotal: S/. ${total.toFixed(2)}%0A%0AGracias!`;
+
+  const url = `https://wa.me/51990662988?text=${mensaje}`;
+  window.open(url, '_blank');
 }
+
+// Inicializar contador al cargar la página
+document.addEventListener('DOMContentLoaded', actualizarContador);
