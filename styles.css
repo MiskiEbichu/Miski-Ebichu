@@ -251,3 +251,16 @@ footer {
 .whatsapp-float:hover {
   transform: scale(1.1);
 }
+#lista-carrito li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+#lista-carrito button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
