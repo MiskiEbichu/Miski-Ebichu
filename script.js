@@ -159,7 +159,13 @@ function enviarCarritoWhatsApp() {
   window.open(`https://wa.me/51990662988?text=${mensaje}`, '_blank');
 }
 <button onclick="comprarYEnviar('Vestido Largo')">Comprar</button>
-function comprarYEnviar(producto) {
-  const mensaje = `Hola, quiero comprar: ${producto}`;
-  window.open(`https://wa.me/51990662988?text=${mensaje}`, '_blank');
+function comprarProducto(producto) {
+  // Agregar al carrito
+  carrito.push(producto);
+  actualizarCarrito();
+
+  // Redirigir inmediatamente a WhatsApp
+  const mensaje = `Hola, quiero comprar el siguiente producto:%0A- ${producto}`;
+  const url = `https://wa.me/51990662988?text=${mensaje}`;
+  window.open(url, '_blank');
 }
