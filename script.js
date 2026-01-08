@@ -74,22 +74,3 @@ function finalizarCompra(metodo) {
 
   window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
 }
-/* Contenedor de categorías */
-.contenedor-categorias {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap; /* se adapta a celular */
-}
-
-/* Caja de cada categoría */
-.categoria {
-  background: #ffe6f0;
-  padding: 20px;
-  border-radius: 20px;
-  width: 320px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
-  animation: aparecer 0.8s ease;
-}
