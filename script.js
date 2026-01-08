@@ -1,26 +1,26 @@
 let carrito = [];
-let carritoVisible = false;
+let carritoAbierto = false;
 
-// Mostrar / ocultar carrito
+/* Abrir / cerrar carrito */
 function toggleCarrito() {
   const panel = document.getElementById("panel-carrito");
-  carritoVisible = !carritoVisible;
-  panel.style.right = carritoVisible ? "0" : "-380px";
+  carritoAbierto = !carritoAbierto;
+  panel.style.right = carritoAbierto ? "0" : "-380px";
 }
 
-// Agregar producto
+/* Agregar producto */
 function agregarAlCarrito(nombre, precio, imagen) {
   carrito.push({ nombre, precio, imagen });
   actualizarCarrito();
 }
 
-// Eliminar producto
+/* Eliminar producto */
 function eliminarProducto(index) {
   carrito.splice(index, 1);
   actualizarCarrito();
 }
 
-// Actualizar carrito
+/* Actualizar carrito */
 function actualizarCarrito() {
   const lista = document.getElementById("lista-carrito");
   const totalEl = document.getElementById("total-carrito");
@@ -31,10 +31,9 @@ function actualizarCarrito() {
 
   carrito.forEach((p, index) => {
     total += p.precio;
-
     lista.innerHTML += `
       <div class="item-carrito">
-        <img src="${p.imagen}">
+        <img src="${p.imagen}" alt="${p.nombre}">
         <div class="info">
           <strong>${p.nombre}</strong>
           <span>S/. ${p.precio.toFixed(2)}</span>
@@ -48,13 +47,13 @@ function actualizarCarrito() {
   totalEl.textContent = `Total: S/. ${total.toFixed(2)}`;
 }
 
-// Comprar directo
+/* Comprar directo */
 function comprarDirecto(nombre, precio) {
   const mensaje = `Hola, quiero comprar:%0A- ${nombre} (S/. ${precio})`;
   window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
 }
 
-// Finalizar compra
+/* Finalizar compra */
 function finalizarCompra() {
   if (carrito.length === 0) {
     alert("Tu carrito está vacío 🛒");
