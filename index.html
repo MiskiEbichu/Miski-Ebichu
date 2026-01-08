@@ -129,3 +129,41 @@
 <script src="script.js"></script>
 </body>
 </html>
+// =============================
+// CARRITO DE COMPRAS + WHATSAPP
+// =============================
+
+let carrito = [];
+
+// Agregar producto al carrito
+function comprarProducto(nombre) {
+  carrito.push(nombre);
+  actualizarCarrito();
+}
+
+// Actualizar contador y lista visible
+function actualizarCarrito() {
+  const contador = document.getElementById('contador-carrito');
+  const lista = document.getElementById('lista-carrito');
+
+  contador.textContent = carrito.length;
+  lista.innerHTML = '';
+
+  carrito.forEach((producto, index) => {
+    const li = document.createElement('li');
+    li.textContent = producto;
+    lista.appendChild(li);
+  });
+}
+
+// Enviar pedido por WhatsApp
+function enviarCarritoWhatsApp() {
+  if (carrito.length === 0) {
+    alert('Tu carrito está vacío');
+    return;
+  }
+
+  const mensaje = `Hola, quiero hacer un pedido:%0A- ${carrito.join('%0A- ')}`;
+  const url = `https://wa.me/51990662988?text=${mensaje}`;
+  window.open(url, '_blank');
+}
