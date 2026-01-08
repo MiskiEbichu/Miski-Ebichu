@@ -23,13 +23,23 @@ function abrirCarrito() {
   const lista = document.getElementById('lista-carrito');
   lista.innerHTML = '';
 
-  carrito.forEach(p => {
+  carrito.forEach((p, index) => {
     const li = document.createElement('li');
-    li.textContent = `${p.nombre} - S/. ${p.precio}`;
+    li.innerHTML = `
+      ${p.nombre} - S/. ${p.precio}
+      <button onclick="eliminarProducto(${index})">❌</button>
+    `;
     lista.appendChild(li);
   });
 
   modal.style.display = 'block';
+}
+
+// ❌ ELIMINAR PRODUCTO
+function eliminarProducto(index) {
+  carrito.splice(index, 1);
+  actualizarContador();
+  abrirCarrito(); // refresca la lista
 }
 
 // CERRAR CARRITO
