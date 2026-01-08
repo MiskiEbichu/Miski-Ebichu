@@ -53,17 +53,24 @@ function comprarDirecto(nombre, precio) {
   window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
 }
 
-/* Finalizar compra */
-function finalizarCompra() {
+function finalizarCompra(metodo) {
   if (carrito.length === 0) {
     alert("Tu carrito está vacío 🛒");
     return;
   }
 
-  let mensaje = "Hola, quiero realizar el siguiente pedido:%0A";
+  let total = 0;
+  let mensaje = "Hola, quiero realizar el siguiente pedido:%0A%0A";
+
   carrito.forEach(p => {
+    total += p.precio;
     mensaje += `- ${p.nombre} (S/. ${p.precio})%0A`;
   });
+
+  mensaje += `%0ATotal: S/. ${total.toFixed(2)}%0A`;
+  mensaje += `Método de pago: ${metodo}%0A`;
+  mensaje += `Número para pago: 990 662 988%0A`;
+  mensaje += `Espero confirmación, gracias 💖`;
 
   window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
 }
