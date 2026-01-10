@@ -3,28 +3,29 @@
 // ==============================
 
 let carrito = [];
-let carritoAbierto = false;
 
-// FIX para eventos táctiles móviles
+// FIX eventos táctiles móviles
 document.addEventListener("touchstart", function(){}, true);
 
-// ------------------------------
-// ABRIR / CERRAR CARRITO
-// ------------------------------
-function toggleCarrito() {
-  const panel = document.getElementById("panel-carrito");
-  carritoAbierto = !carritoAbierto;
-
-  if (carritoAbierto) {
-    panel.classList.add("abierto");
-  } else {
-    panel.classList.remove("abierto");
-  }
+// ==============================
+// ABRIR / CERRAR CARRITO (SIN ESTADO FALSO)
+// ==============================
+function abrirCarrito() {
+  document.getElementById("panel-carrito").classList.add("abierto");
 }
 
-// ------------------------------
+function cerrarCarrito() {
+  document.getElementById("panel-carrito").classList.remove("abierto");
+}
+
+function toggleCarrito() {
+  const panel = document.getElementById("panel-carrito");
+  panel.classList.toggle("abierto");
+}
+
+// ==============================
 // AGREGAR PRODUCTO
-// ------------------------------
+// ==============================
 function agregarAlCarrito(nombre, precio, imagen) {
   const producto = carrito.find(p => p.nombre === nombre);
 
@@ -42,17 +43,24 @@ function agregarAlCarrito(nombre, precio, imagen) {
   actualizarCarrito();
 }
 
-// ------------------------------
-// ELIMINAR PRODUCTO
-// ------------------------------
-function eliminarProducto(index) {
-  carrito.splice(index, 1);
+// ==============================
+// COMPRAR DIRECTO (FIX)
+// ==============================
+function comprarDirecto(nombre, precio, imagen = "") {
+  carrito = [{
+    nombre,
+    precio,
+    imagen,
+    cantidad: 1
+  }];
+
   actualizarCarrito();
+  abrirCarrito(); // 👈 AHORA SÍ SE ABRE
 }
 
-// ------------------------------
+// ==============================
 // ACTUALIZAR CARRITO
-// ------------------------------
+// ==============================
 function actualizarCarrito() {
   const lista = document.getElementById("lista-carrito");
   const totalEl = document.getElementById("total-carrito");
@@ -70,11 +78,8 @@ function actualizarCarrito() {
 
     lista.innerHTML += `
       <div class="item-carrito">
-        <img src="${p.imagen}" alt="${p.nombre}">
-        <div class="info">
-          <strong>${p.nombre}</strong>
-          <span>${p.cantidad} x S/. ${p.precio.toFixed(2)}</span>
-        </div>
+        <strong>${p.nombre}</strong><br>
+        ${p.cantidad} x S/. ${p.precio.toFixed(2)}
         <button type="button" onclick="eliminarProducto(${index})">❌</button>
       </div>
     `;
@@ -84,24 +89,21 @@ function actualizarCarrito() {
   totalEl.textContent = `Total: S/. ${total.toFixed(2)}`;
 }
 
-// ------------------------------
-// COMPRAR DIRECTO
-// ------------------------------
-function comprarDirecto(nombre, precio) {
-  carrito = [{
-    nombre,
-    precio,
-    cantidad: 1,
-    imagen: ""
-  }];
-
+// ==============================
+// ELIMINAR PRODUCTO
+// ==============================
+function eliminarProducto(index) {
+  carrito.splice(index, 1);
   actualizarCarrito();
-  toggleCarrito();
+
+  if (carrito.length === 0) {
+    cerrarCarrito();
+  }
 }
 
-// ------------------------------
-// FINALIZAR COMPRA (BOLETA)
-// ------------------------------
+// ==============================
+// FINALIZAR COMPRA
+// ==============================
 function finalizarCompra(metodo) {
   if (carrito.length === 0) {
     alert("Tu carrito está vacío 🛒");
@@ -109,23 +111,24 @@ function finalizarCompra(metodo) {
   }
 
   let total = 0;
-  let mensaje = "🧾 *BOLETA - MISKI EBICHU*%0A%0A";
+  let mensaje = "🧾 *BOLETA - MISKI EBICHU*\n\n";
 
   carrito.forEach(p => {
     const subtotal = p.precio * p.cantidad;
     total += subtotal;
-    mensaje += `• ${p.nombre} x${p.cantidad} - S/. ${subtotal.toFixed(2)}%0A`;
+    mensaje += `• ${p.nombre} x${p.cantidad} - S/. ${subtotal.toFixed(2)}\n`;
   });
 
-  mensaje += `%0A💰 Total: S/. ${total.toFixed(2)}%0A`;
-  mensaje += `💳 Pago: ${metodo}%0A`;
-  mensaje += `📲 Número: 990 662 988%0A`;
-  mensaje += `🙏 Gracias por tu compra 💖`;
+  mensaje += `\n💰 Total: S/. ${total.toFixed(2)}`;
+  mensaje += `\n💳 Pago: ${metodo}`;
+  mensaje += `\n🙏 Gracias por tu compra 💖`;
 
-  const url = `https://wa.me/51990662988?text=${mensaje}`;
-  window.open(url, "_blank");
+  window.open(
+    `https://wa.me/51990662988?text=${encodeURIComponent(mensaje)}`,
+    "_blank"
+  );
 
   carrito = [];
   actualizarCarrito();
-  toggleCarrito();
+  cerrarCarrito();
 }
