@@ -13,6 +13,7 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
 /* GENERAL */
@@ -230,13 +231,6 @@ button:hover {
     width: 100%;
   }
 }
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-}
 
 body {
   background-color: #fff6fb;
@@ -250,7 +244,8 @@ header {
 }
 
 header h1 {
-  color: #fff;\  font-size: 2.2rem;
+  color: #fff;
+  font-size: 2.2rem;
 }
 
 nav ul {
@@ -447,4 +442,8 @@ footer {
 }
 html {
   scroll-behavior: smooth;
+}
+/* ===== FIX DEFINITIVO CARRITO ===== */
+#panel-carrito.abierto {
+  right: 0;
 }
