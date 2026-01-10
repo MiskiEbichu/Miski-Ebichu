@@ -418,3 +418,30 @@ footer {
   width: 30px;
   height: auto;
 }
+#categorias {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.lista-categorias {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.categoria-link {
+  background: #ffe6f2;
+  color: #ff4da6;
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.categoria-link:hover {
+  background: #ff4da6;
+  color: #fff;
+  transform: scale(1.05);
+}
