@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Tienda virtual Miski Ebichu: ropa, accesorios y productos kawaii en Perú">
   <title>Miski Ebichu</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Scroll suave -->
   <style>
     html { scroll-behavior: smooth; }
   </style>
 </head>
+
 <body>
 
 <!-- WhatsApp flotante -->
@@ -22,28 +22,29 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- Carrito flotante -->
-<button type="button" class="carrito-float" onclick="toggleCarrito()" aria-label="Abrir carrito">
+<!-- Botón carrito -->
+<button type="button" class="carrito-float" onclick="toggleCarrito()">
   <i class="fas fa-shopping-cart"></i>
   <span id="contador-carrito">0</span>
 </button>
 
 <!-- Panel carrito -->
-<aside id="panel-carrito" aria-labelledby="titulo-carrito">
-  <span class="cerrar-carrito" onclick="toggleCarrito()" aria-label="Cerrar carrito">&times;</span>
-  <h2 id="titulo-carrito">Mi Carrito</h2>
+<aside id="panel-carrito">
+  <span class="cerrar-carrito" onclick="toggleCarrito()">&times;</span>
+  <h2>Mi Carrito</h2>
+
   <div id="lista-carrito"></div>
   <div id="total-carrito">Total: S/. 0.00</div>
 
   <div class="metodos-pago">
     <p>Elige tu método de pago:</p>
 
-    <button class="btn-yape" onclick="finalizarCompra('Yape')">
+    <button type="button" class="btn-yape" onclick="finalizarCompra('Yape')">
       <img src="https://vectorseek.com/wp-content/uploads/2023/09/Yape-App-Logo-Vector.svg-.png" alt="Yape">
       Yape
     </button>
 
-    <button class="btn-plin" onclick="finalizarCompra('Plin')">
+    <button type="button" class="btn-plin" onclick="finalizarCompra('Plin')">
       <img src="https://logosenvector.com/logo/img/plin-interbank-4391.png" alt="Plin">
       Plin
     </button>
@@ -65,10 +66,7 @@
 <section id="inicio">
   <h2>✨ Bienvenidos a Miski Ebichu ✨</h2>
   <img src="logo-kawaii.jpg" alt="Banner Miski Ebichu" class="banner">
-  <p>
-    Descubre un mundo lleno de ternura, color y estilo 💖.  
-    Accesorios kawaii, ropa, maquillaje y detalles únicos 🌸
-  </p>
+  <p>Accesorios kawaii, ropa, maquillaje y detalles únicos 💖</p>
 </section>
 
 <section id="categorias">
@@ -92,16 +90,16 @@
       <img src="https://via.placeholder.com/150" alt="Vestido Largo">
       <h4>Vestido Largo</h4>
       <p>S/. 60.00</p>
-      <button type=onclick="agregarAlCarrito('Vestido Largo',60,'https://via.placeholder.com/150')">Agregar</button>
-      <button type=onclick="comprarDirecto('Vestido Largo',60)">Comprar</button>
+      <button type="button" onclick="agregarAlCarrito('Vestido Largo',60,'https://via.placeholder.com/150')">Agregar</button>
+      <button type="button" onclick="comprarDirecto('Vestido Largo',60)">Comprar</button>
     </article>
 
     <article class="producto">
       <img src="https://via.placeholder.com/150" alt="Blusa">
       <h4>Blusa</h4>
       <p>S/. 35.00</p>
-      <button type=onclick="agregarAlCarrito('Blusa',35,'https://via.placeholder.com/150')">Agregar</button>
-      <button type=onclick="comprarDirecto('Blusa',35)">Comprar</button>
+      <button type="button" onclick="agregarAlCarrito('Blusa',35,'https://via.placeholder.com/150')">Agregar</button>
+      <button type="button" onclick="comprarDirecto('Blusa',35)">Comprar</button>
     </article>
   </div>
 
@@ -113,8 +111,8 @@
       <img src="https://via.placeholder.com/150" alt="Delineador">
       <h4>Delineador</h4>
       <p>S/. 15.00</p>
-      <button type=onclick="agregarAlCarrito('Delineador',15,'https://via.placeholder.com/150')">Agregar</button>
-      <button type=onclick="comprarDirecto('Delineador',15)">Comprar</button>
+      <button type="button" onclick="agregarAlCarrito('Delineador',15,'https://via.placeholder.com/150')">Agregar</button>
+      <button type="button" onclick="comprarDirecto('Delineador',15)">Comprar</button>
     </article>
   </div>
 
@@ -126,8 +124,8 @@
       <img src="https://http2.mlstatic.com/D_NQ_NP_670351-MLM86017570767_062025-O-disney-auriculares-bluetooth.webp">
       <h4>Auricular Bluetooth Disney</h4>
       <p>S/. 120.00</p>
-      <button type=onclick="agregarAlCarrito('Auricular Bluetooth Disney',120,'https://http2.mlstatic.com/D_NQ_NP_670351-MLM86017570767_062025-O-disney-auriculares-bluetooth.webp')">Agregar</button>
-      <button type=onclick="comprarDirecto('Auricular Bluetooth Disney',120)">Comprar</button>
+      <button type="button" onclick="agregarAlCarrito('Auricular Bluetooth Disney',120,'https://http2.mlstatic.com/D_NQ_NP_670351-MLM86017570767_062025-O-disney-auriculares-bluetooth.webp')">Agregar</button>
+      <button type="button" onclick="comprarDirecto('Auricular Bluetooth Disney',120)">Comprar</button>
     </article>
   </div>
 
@@ -139,18 +137,15 @@
       <img src="https://gforgadget.gr/wp-content/uploads/2024/09/M5746.webp">
       <h4>Mochila 4 plazas</h4>
       <p>S/. 95.00</p>
-      <button type=onclick="agregarAlCarrito('Mochila 4 plazas',95,'https://gforgadget.gr/wp-content/uploads/2024/09/M5746.webp')">Agregar</button>
-      <button type=onclick="comprarDirecto('Mochila 4 plazas',95)">Comprar</button>
+      <button type="button" onclick="agregarAlCarrito('Mochila 4 plazas',95,'https://gforgadget.gr/wp-content/uploads/2024/09/M5746.webp')">Agregar</button>
+      <button type="button" onclick="comprarDirecto('Mochila 4 plazas',95)">Comprar</button>
     </article>
   </div>
-
 </section>
 
 <section id="sobre-nosotros">
   <h2>Sobre Nosotros</h2>
-  <p>Somos una tienda virtual apasionada por el estilo kawaii, donde el color, la ternura y el buen gusto se unen ✨.
-    Ofrecemos una cuidada selección de ropa para dama, accesorios y maquillaje con diseños únicos, pensados para quienes desean expresar su personalidad de una forma divertida y auténtica, sin perder el estilo. Creemos que los pequeños detalles hacen la diferencia, por eso elegimos cada producto con dedicación y cariño, buscando siempre calidad, originalidad y encanto.
-    Nuestro objetivo es brindarte una experiencia de compra segura, cómoda y agradable, para que disfrutes cada pedido y lleves un toque kawaii a tu día a día 💕</p>
+  <p>Tienda kawaii con productos llenos de ternura y estilo 💕</p>
 </section>
 
 <section id="contacto">
@@ -165,12 +160,19 @@
     <a href="#"><i class="fab fa-facebook"></i></a>
     <a href="#"><i class="fab fa-instagram"></i></a>
     <a href="#"><i class="fab fa-tiktok"></i></a>
+  </div>
 </section>
-  
+
 <footer>
   <p>&copy; 2026 Miski Ebichu. Todos los derechos reservados.</p>
 </footer>
 
 <script src="script.js"></script>
+
+<!-- FIX TOUCH iOS / ANDROID -->
+<script>
+  document.addEventListener("touchstart", function(){}, true);
+</script>
+
 </body>
 </html>
