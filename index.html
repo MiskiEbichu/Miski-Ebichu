@@ -9,14 +9,16 @@
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Scroll suave -->
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 <body>
 
 <!-- WhatsApp flotante -->
-<a href="https://wa.me/51990662988"
-   class="whatsapp-float"
-   target="_blank"
-   aria-label="WhatsApp">
+<a href="https://wa.me/51990662988" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -32,204 +34,130 @@
   <h2 id="titulo-carrito">Mi Carrito</h2>
   <div id="lista-carrito"></div>
   <div id="total-carrito">Total: S/. 0.00</div>
+
   <div class="metodos-pago">
-  <p>Elige tu método de pago:</p>
+    <p>Elige tu método de pago:</p>
 
-  <button class="btn-yape" onclick="finalizarCompra('Yape')">
-    <img src="https://vectorseek.com/wp-content/uploads/2023/09/Yape-App-Logo-Vector.svg-.png" alt="Yape">
-    Yape
-  </button>
+    <button class="btn-yape" onclick="finalizarCompra('Yape')">
+      <img src="https://vectorseek.com/wp-content/uploads/2023/09/Yape-App-Logo-Vector.svg-.png" alt="Yape">
+      Yape
+    </button>
 
-  <button class="btn-plin" onclick="finalizarCompra('Plin')">
-    <img src="https://logosenvector.com/logo/img/plin-interbank-4391.png" alt="Plin">
-    Plin
-  </button>
-</div>
-  </a>
+    <button class="btn-plin" onclick="finalizarCompra('Plin')">
+      <img src="https://logosenvector.com/logo/img/plin-interbank-4391.png" alt="Plin">
+      Plin
+    </button>
+  </div>
 </aside>
 
 <header>
-<h1>Miski Ebichu</h1>
-<nav>
-<ul>
-<li><a href="#inicio">Inicio</a></li>
-<li><a href="#productos">Productos</a></li>
-<li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-<li><a href="#contacto">Contacto</a></li>
-</ul>
-</nav>
+  <h1>Miski Ebichu</h1>
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
 </header>
 
-
 <section id="inicio">
-<h2>✨ Bienvenidos a Miski Ebichu ✨</h2>
-<img src="logo-kawaii.jpg" alt="Banner Miski Ebichu" class="banner">
-<p>Descubre un mundo lleno de ternura, color y estilo 💖. En Miski Ebichu encontrarás las últimas tendencias en accesorios kawaii, ropa, maquillajes y detalles únicos que harán brillar tu personalidad.
-
-Cada pieza está cuidadosamente seleccionada para ofrecerte diseños originales, modernos y encantadores, perfectos para expresar tu esencia y llevar el estilo kawaii a cada momento de tu día 🌸</p>
+  <h2>✨ Bienvenidos a Miski Ebichu ✨</h2>
+  <img src="logo-kawaii.jpg" alt="Banner Miski Ebichu" class="banner">
+  <p>
+    Descubre un mundo lleno de ternura, color y estilo 💖.  
+    Accesorios kawaii, ropa, maquillaje y detalles únicos 🌸
+  </p>
 </section>
-<section id="categorias">
-  <h2>Explora por Categorías</h2>
 
+<section id="categorias">
+  <h2>🌸 Explora por Categorías 🌸</h2>
   <div class="lista-categorias">
     <a href="#ropa-dama" class="categoria-link">👗 Ropa de Dama</a>
     <a href="#maquillaje" class="categoria-link">💄 Maquillaje</a>
     <a href="#auriculares" class="categoria-link">🎧 Auriculares</a>
     <a href="#mochilas" class="categoria-link">🎒 Mochilas</a>
   </div>
-  
 </section>
+
 <section id="productos">
   <h2>Nuestros Productos</h2>
 
-  <div class="categoria" id="👗 Ropa de Dama"> 
+  <!-- ROPA -->
+  <div class="categoria" id="ropa-dama">
     <h3>👗 Ropa de Dama</h3>
 
     <article class="producto">
       <img src="https://via.placeholder.com/150" alt="Vestido Largo">
       <h4>Vestido Largo</h4>
       <p>S/. 60.00</p>
+      <button onclick="agregarAlCarrito('Vestido Largo',60,'https://via.placeholder.com/150')">Agregar</button>
+      <button onclick="comprarDirecto('Vestido Largo',60)">Comprar</button>
+    </article>
 
-      <div class="acciones-producto">
-        <button class="btn-carrito"
-          onclick="agregarAlCarrito('Vestido Largo', 60, 'https://via.placeholder.com/150')">
-          Agregar
-        </button>
-
-        <button class="btn-comprar"
-          onclick="comprarDirecto('Vestido Largo', 60)">
-          Comprar
-        </button>
-      </div>
-      </article>
-    
-       <article class="producto">
+    <article class="producto">
       <img src="https://via.placeholder.com/150" alt="Blusa">
       <h4>Blusa</h4>
       <p>S/. 35.00</p>
+      <button onclick="agregarAlCarrito('Blusa',35,'https://via.placeholder.com/150')">Agregar</button>
+      <button onclick="comprarDirecto('Blusa',35)">Comprar</button>
+    </article>
+  </div>
 
-      <div class="acciones-producto">
-        <button class="btn-carrito"
-          onclick="agregarAlCarrito('Blusa', 35, 'https://via.placeholder.com/150')">
-          Agregar
-        </button>
+  <!-- MAQUILLAJE -->
+  <div class="categoria" id="maquillaje">
+    <h3>💄 Maquillaje</h3>
 
-        <button class="btn-comprar"
-          onclick="comprarDirecto('Blusa', 35)">
-          Comprar
-        </button>
-        </div>
-      </article>
-    
-       <article class="producto">
-      <img src="https://via.placeholder.com/150" alt="Vestido Fresh">
-      <h4>Vestido Fresh</h4>
-      <p>S/. 75.00</p>
-
-      <div class="acciones-producto">
-        <button class="btn-carrito"
-          onclick="agregarAlCarrito('Vestido Fresh', 75, 'https://via.placeholder.com/150')">
-          Agregar
-        </button>
-
-        <button class="btn-comprar"
-          onclick="comprarDirecto('Vestido Fresh', 75)">
-          Comprar
-        </button>
-         </div>
-
-    </section>
-    <div class="categoria" id="💄 Mquillaje">
-     <h3>💄 Maquillaje</h3>
-
-     <article class="producto">
+    <article class="producto">
       <img src="https://via.placeholder.com/150" alt="Delineador">
       <h4>Delineador</h4>
       <p>S/. 15.00</p>
+      <button onclick="agregarAlCarrito('Delineador',15,'https://via.placeholder.com/150')">Agregar</button>
+      <button onclick="comprarDirecto('Delineador',15)">Comprar</button>
+    </article>
+  </div>
 
-      <div class="acciones-producto">
-        <button class="btn-carrito"
-          onclick="agregarAlCarrito('Delineador', 15, 'https://via.placeholder.com/150')">
-          Agregar
-        </button>
+  <!-- AURICULARES -->
+  <div class="categoria" id="auriculares">
+    <h3>🎧 Auriculares</h3>
 
-        <button class="btn-comprar"
-          onclick="comprarDirecto('Delineador', 15)">
-          Comprar
-        </button>
-          </div>
-       </article>
-
-      </section>
-    <div class="categoria" id="🎧 Auriculares">
-     <h3>🎧 Auriculares</h3>
-
-     <article class="producto">
-      <img src="https://http2.mlstatic.com/D_NQ_NP_670351-MLM86017570767_062025-O-disney-auriculares-bluetooth-qs-o02-gato-mary-pato-donald.webp">
-      <h4>Auricular Bluetooth Lucifer Disney</h4>
+    <article class="producto">
+      <img src="https://http2.mlstatic.com/D_NQ_NP_670351-MLM86017570767_062025-O-disney-auriculares-bluetooth.webp">
+      <h4>Auricular Bluetooth Disney</h4>
       <p>S/. 120.00</p>
+      <button onclick="agregarAlCarrito('Auricular Bluetooth Disney',120,'https://http2.mlstatic.com/D_NQ_NP_670351-MLM86017570767_062025-O-disney-auriculares-bluetooth.webp')">Agregar</button>
+      <button onclick="comprarDirecto('Auricular Bluetooth Disney',120)">Comprar</button>
+    </article>
+  </div>
 
-      <div class="acciones-producto">
-        <button class="btn-carrito"
-          onclick="agregarAlCarrito('Auricular Bluetooth Lucifer Disney', 120, 'https://http2.mlstatic.com/D_NQ_NP_670351-MLM86017570767_062025-O-disney-auriculares-bluetooth-qs-o02-gato-mary-pato-donald.webp')">
-          Agregar
-        </button>
+  <!-- MOCHILAS -->
+  <div class="categoria" id="mochilas">
+    <h3>🎒 Mochilas</h3>
 
-        <button class="btn-comprar"
-          onclick="comprarDirecto('Auricular Bluetooth Lucifer Disney', )">
-          Comprar
-        </button>
-         </div>
-        </article>
-
-      </section>
-    <div class="categoria" id="🎒 Mochilas">
-     <h3>🎒 Mochilas</h3>
-
-     <article class="producto">
-      <img src="https://gforgadget.gr/wp-content/uploads/2024/09/M5746-sakidio-platis-4-theseon-49x30x20cm-s312-lefko-GFORGADGET1.webp" alt="Mochila 4 plazas 49x30x20cm S312 Gris">
-      <h4>Mochila 4 plazas 49x30x20cm S312</h4>
+    <article class="producto">
+      <img src="https://gforgadget.gr/wp-content/uploads/2024/09/M5746.webp">
+      <h4>Mochila 4 plazas</h4>
       <p>S/. 95.00</p>
+      <button onclick="agregarAlCarrito('Mochila 4 plazas',95,'https://gforgadget.gr/wp-content/uploads/2024/09/M5746.webp')">Agregar</button>
+      <button onclick="comprarDirecto('Mochila 4 plazas',95)">Comprar</button>
+    </article>
+  </div>
 
-      <div class="acciones-producto">
-        <button class="btn-carrito"
-          onclick="agregarAlCarrito('Mochila 4 plazas 49x30x20cm S312', 95, 'https://gforgadget.gr/wp-content/uploads/2024/09/M5746-sakidio-platis-4-theseon-49x30x20cm-s312-lefko-GFORGADGET1.webp')">
-          Agregar
-        </button>
-
-        <button class="btn-comprar"
-          onclick="comprarDirecto('Mochila 4 plazas 49x30x20cm S312', 95)">
-          Comprar
-        </button>
-        </article>
-      
 </section>
+
 <section id="sobre-nosotros">
   <h2>Sobre Nosotros</h2>
-  <p>Somos una tienda virtual apasionada por el estilo kawaii, donde el color, la ternura y el buen gusto se unen ✨. Ofrecemos una cuidada selección de ropa para dama, accesorios y maquillaje con diseños únicos, pensados para quienes desean expresar su personalidad de una forma divertida y auténtica, sin perder el estilo.
-
-Creemos que los pequeños detalles hacen la diferencia, por eso elegimos cada producto con dedicación y cariño, buscando siempre calidad, originalidad y encanto.
-
-Nuestro objetivo es brindarte una experiencia de compra segura, cómoda y agradable, para que disfrutes cada pedido y lleves un toque kawaii a tu día a día 💕</p>
+  <p>Estilo kawaii, ternura y calidad en cada detalle 💕</p>
 </section>
 
 <section id="contacto">
   <h2>Contáctanos</h2>
-  <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51990662988" target="_blank">+51 990 662 988</a></p>
-  <p><i class="fas fa-envelope"></i> contacto@miskiebichu.com</p>
-</section>
-
-<section id="redes">
-  <h2>Síguenos</h2>
-  <div class="redes-sociales">
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-tiktok"></i></a>
-  </div>
+  <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51990662988">+51 990 662 988</a></p>
 </section>
 
 <footer>
-  <p>&copy; 2026 Miski Ebichu. Todos los derechos reservados.</p>
+  <p>&copy; 2026 Miski Ebichu</p>
 </footer>
 
 <script src="script.js"></script>
