@@ -70,7 +70,15 @@ function finalizarCompra(metodo) {
   mensaje += `%0ATotal: S/. ${total.toFixed(2)}%0A`;
   mensaje += `Método de pago: ${metodo}%0A`;
   mensaje += `Número para pago: 990 662 988%0A`;
-  mensaje += `Espero confirmación, gracias 💖`;
+  mensaje += `Espero confirmación, gracias Hola, quiero realizar el siguiente pedido:
+
+* Vestido Largo (S/. 60)
+* Delineador (S/. 15)
+
+Total: S/. 75.00
+Método de pago: Yape
+Número para pago: 990 662 988
+Espero confirmación, gracias �`;
 
   window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
 }
