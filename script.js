@@ -74,3 +74,40 @@ function finalizarCompra(metodo) {
 
   window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
 }
+function generarBoleta(metodoPago) {
+  let mensaje = "🧾 *BOLETA DE COMPRA*\n";
+  mensaje += "🏪 *Miski Ebichu*\n\n";
+
+  const fecha = new Date().toLocaleString("es-PE");
+  mensaje += "📅 Fecha: " + fecha + "\n";
+  mensaje += "🧾 Boleta N°: MB-" + Date.now() + "\n\n";
+
+  let total = 0;
+
+  carrito.forEach(item => {
+    mensaje += `• ${item.nombre} x${item.cantidad} - S/. ${item.precio * item.cantidad}\n`;
+    total += item.precio * item.cantidad;
+  });
+
+  mensaje += "\n💰 *TOTAL: S/. " + total.toFixed(2) + "*\n";
+  mensaje += "💳 Pago: " + metodoPago + "\n\n";
+  mensaje += "🙏 Gracias por tu compra 💕";
+
+  const telefono = "51990662988";
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+}
+function finalizarCompra(metodoPago) {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío");
+    return;
+  }
+
+  generarBoleta(metodoPago);
+
+  carrito = [];
+  actualizarCarrito();
+  toggleCarrito();
+}
+
