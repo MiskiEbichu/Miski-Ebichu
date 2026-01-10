@@ -74,3 +74,69 @@ function finalizarCompra(metodo) {
 
   window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
 }
+function mostrarTicket(metodoPago) {
+  const ticket = document.getElementById("boleta-ticket");
+  const lista = document.getElementById("ticket-productos");
+
+  lista.innerHTML = "";
+
+  let total = 0;
+
+  carrito.forEach(item => {
+    const linea = document.createElement("div");
+    linea.className = "ticket-item";
+    linea.innerHTML = `
+      <span>${item.nombre} x${item.cantidad}</span>
+      <span>S/. ${(item.precio * item.cantidad).toFixed(2)}</span>
+    `;
+    lista.appendChild(linea);
+    total += item.precio * item.cantidad;
+  });
+
+  document.getElementById("ticket-total").textContent =
+    "S/. " + total.toFixed(2);
+
+  document.getElementById("ticket-fecha").textContent =
+    "Fecha: " + new Date().toLocaleString("es-PE");
+
+  document.getElementById("ticket-numero").textContent =
+    "Boleta N° MB-" + Date.now();
+
+  document.getElementById("ticket-pago").textContent =
+    "Pago: " + metodoPago;
+
+  ticket.classList.remove("oculto");
+}
+function imprimirTicket() {
+  const contenido = document.querySelector(".ticket-contenido").innerHTML;
+  const ventana = window.open("", "", "width=300,height=600");
+
+  ventana.document.write(`
+    <html>
+    <head>
+      <title>Boleta</title>
+      <style>
+        body { font-family: monospace; }
+      </style>
+    </head>
+    <body>${contenido}</body>
+    </html>
+  `);
+
+  ventana.document.close();
+  ventana.print();
+}
+function cerrarTicket() {
+  document.getElementById("boleta-ticket").classList.add("oculto");
+}
+function finalizarCompra(metodoPago) {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío");
+    return;
+  }
+
+  mostrarTicket(metodoPago);
+
+  carrito = [];
+  actualizarCarrito();
+}
