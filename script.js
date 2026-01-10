@@ -1,58 +1,107 @@
+// ==============================
+// CARRITO DE COMPRAS - MISKI EBICHU
+// ==============================
+
 let carrito = [];
 let carritoAbierto = false;
 
-/* Abrir / cerrar carrito */
+// FIX para eventos táctiles móviles
+document.addEventListener("touchstart", function(){}, true);
+
+// ------------------------------
+// ABRIR / CERRAR CARRITO
+// ------------------------------
 function toggleCarrito() {
   const panel = document.getElementById("panel-carrito");
   carritoAbierto = !carritoAbierto;
-  panel.style.right = carritoAbierto ? "0" : "-380px";
+
+  if (carritoAbierto) {
+    panel.classList.add("abierto");
+  } else {
+    panel.classList.remove("abierto");
+  }
 }
 
-/* Agregar producto */
+// ------------------------------
+// AGREGAR PRODUCTO
+// ------------------------------
 function agregarAlCarrito(nombre, precio, imagen) {
-  carrito.push({ nombre, precio, imagen });
+  const producto = carrito.find(p => p.nombre === nombre);
+
+  if (producto) {
+    producto.cantidad++;
+  } else {
+    carrito.push({
+      nombre,
+      precio,
+      imagen,
+      cantidad: 1
+    });
+  }
+
   actualizarCarrito();
 }
 
-/* Eliminar producto */
+// ------------------------------
+// ELIMINAR PRODUCTO
+// ------------------------------
 function eliminarProducto(index) {
   carrito.splice(index, 1);
   actualizarCarrito();
 }
 
-/* Actualizar carrito */
+// ------------------------------
+// ACTUALIZAR CARRITO
+// ------------------------------
 function actualizarCarrito() {
   const lista = document.getElementById("lista-carrito");
   const totalEl = document.getElementById("total-carrito");
   const contador = document.getElementById("contador-carrito");
 
   lista.innerHTML = "";
+
   let total = 0;
+  let cantidadTotal = 0;
 
   carrito.forEach((p, index) => {
-    total += p.precio;
+    const subtotal = p.precio * p.cantidad;
+    total += subtotal;
+    cantidadTotal += p.cantidad;
+
     lista.innerHTML += `
       <div class="item-carrito">
         <img src="${p.imagen}" alt="${p.nombre}">
         <div class="info">
           <strong>${p.nombre}</strong>
-          <span>S/. ${p.precio.toFixed(2)}</span>
+          <span>${p.cantidad} x S/. ${p.precio.toFixed(2)}</span>
         </div>
-        <button onclick="eliminarProducto(${index})">❌</button>
+        <button type="button" onclick="eliminarProducto(${index})">❌</button>
       </div>
     `;
   });
 
-  contador.textContent = carrito.length;
+  contador.textContent = cantidadTotal;
   totalEl.textContent = `Total: S/. ${total.toFixed(2)}`;
 }
 
-/* Comprar directo */
+// ------------------------------
+// COMPRAR DIRECTO
+// ------------------------------
 function comprarDirecto(nombre, precio) {
-  const mensaje = `Hola, quiero comprar:%0A- ${nombre} (S/. ${precio})`;
-  window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
+  carrito = [{
+    nombre,
+    precio,
+    cantidad: 1,
+    imagen: ""
+  }];
+
+  actualizarCarrito();
+  toggleCarrito();
 }
 
+// ------------------------------
+// FINALIZAR COMPRA (BOLETA)
+// ------------------------------
 function finalizarCompra(metodo) {
   if (carrito.length === 0) {
     alert("Tu carrito está vacío 🛒");
@@ -60,17 +109,23 @@ function finalizarCompra(metodo) {
   }
 
   let total = 0;
-  let mensaje = "Hola, quiero realizar el siguiente pedido:%0A%0A";
+  let mensaje = "🧾 *BOLETA - MISKI EBICHU*%0A%0A";
 
   carrito.forEach(p => {
-    total += p.precio;
-    mensaje += `- ${p.nombre} (S/. ${p.precio})%0A`;
+    const subtotal = p.precio * p.cantidad;
+    total += subtotal;
+    mensaje += `• ${p.nombre} x${p.cantidad} - S/. ${subtotal.toFixed(2)}%0A`;
   });
 
-  mensaje += `%0ATotal: S/. ${total.toFixed(2)}%0A`;
-  mensaje += `Método de pago: ${metodo}%0A`;
-  mensaje += `Número para pago: 990 662 988%0A`;
-  mensaje += `Espero confirmación, gracias 💖;
+  mensaje += `%0A💰 Total: S/. ${total.toFixed(2)}%0A`;
+  mensaje += `💳 Pago: ${metodo}%0A`;
+  mensaje += `📲 Número: 990 662 988%0A`;
+  mensaje += `🙏 Gracias por tu compra 💖`;
 
-  window.open(`https://wa.me/51990662988?text=${mensaje}`, "_blank");
+  const url = `https://wa.me/51990662988?text=${mensaje}`;
+  window.open(url, "_blank");
+
+  carrito = [];
+  actualizarCarrito();
+  toggleCarrito();
 }
