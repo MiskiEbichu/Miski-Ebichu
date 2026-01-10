@@ -448,3 +448,7 @@ footer {
 html {
   scroll-behavior: smooth;
 }
+.categoria-link {
+  position: relative;
+  z-index: 9999;
+}
