@@ -132,3 +132,6 @@ function finalizarCompra(metodo) {
   actualizarCarrito();
   cerrarCarrito();
 }
+function cambiarImagen(idImagen, nuevaSrc) {
+  document.getElementById(idImagen).src = nuevaSrc;
+}
