@@ -89,3 +89,8 @@ function finalizarCompra(metodo = "WhatsApp") {
 
 /* Cargar al iniciar */
 actualizarCarrito();
+function toggleCarrito() {
+  const panel = document.getElementById("panel-carrito");
+  panel.classList.toggle("activo");
+}
+
