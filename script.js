@@ -146,3 +146,55 @@ function abrirImagen(src) {
 function cerrarImagen() {
   document.getElementById("lightbox").style.display = "none";
 }
+let galeria = [];
+let indiceActual = 0;
+
+/* Abrir galería */
+function abrirGaleria(imagenes) {
+  galeria = imagenes;
+  indiceActual = 0;
+
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+
+  img.src = galeria[indiceActual];
+  lightbox.classList.add("activo");
+}
+
+/* Cerrar */
+function cerrarGaleria() {
+  document.getElementById("lightbox").classList.remove("activo");
+}
+
+/* Navegación */
+function imagenSiguiente() {
+  indiceActual = (indiceActual + 1) % galeria.length;
+  animarCambio();
+}
+
+function imagenAnterior() {
+  indiceActual = (indiceActual - 1 + galeria.length) % galeria.length;
+  animarCambio();
+}
+
+/* Animación */
+function animarCambio() {
+  const img = document.getElementById("lightbox-img");
+  img.classList.remove("animar");
+  void img.offsetWidth; // reset animación
+  img.src = galeria[indiceActual];
+  img.classList.add("animar");
+}
+
+/* Swipe móvil */
+let startX = 0;
+
+document.getElementById("lightbox").addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.getElementById("lightbox").addEventListener("touchend", e => {
+  const endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) imagenSiguiente();
+  if (endX - startX > 50) imagenAnterior();
+});
