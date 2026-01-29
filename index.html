@@ -15,10 +15,14 @@
   </style>
 </head>
   
-<div id="lightbox" onclick="cerrarImagen()">
-  <span class="cerrar-lightbox">&times;</span>
+<div id="lightbox">
+  <span class="cerrar-lightbox" onclick="cerrarGaleria()">&times;</span>
+
+  <button class="nav prev" onclick="imagenAnterior()">❮</button>
   <img id="lightbox-img">
+  <button class="nav next" onclick="imagenSiguiente()">❯</button>
 </div>
+
 <body>
 
 <!-- WhatsApp flotante -->
@@ -552,10 +556,17 @@
       <img src="Cartera Kawaii  con lazo 3.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
       <img src="Cartera Kawaii  con lazo 4.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
       <img 
-  src="Cartera Kawaii  con lazo.png"
+  <img
+  src="Cartera Kawaii  con lazo 1.png"
   alt="CARTERA KAWAII CON LAZO"
   class="img-producto"
-  onclick="abrirImagen(this.src)">
+  onclick="abrirGaleria([
+    'Cartera Kawaii  con lazo 1.png',
+    'Cartera Kawaii  con lazo 2.png',
+    'Cartera Kawaii  con lazo 3.png',
+    'Cartera Kawaii  con lazo 4.png'
+  ])">
+
     </div>
   </div>
 
