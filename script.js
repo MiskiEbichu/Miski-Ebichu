@@ -198,3 +198,65 @@ document.getElementById("lightbox").addEventListener("touchend", e => {
   if (startX - endX > 50) imagenSiguiente();
   if (endX - startX > 50) imagenAnterior();
 });
+let galeria = [];
+let indiceActual = 0;
+let nombreProducto = "";
+let precioProducto = 0;
+
+/* Abrir */
+function abrirGaleria(imagenes, nombre, precio) {
+  galeria = imagenes;
+  indiceActual = 0;
+  nombreProducto = nombre;
+  precioProducto = precio;
+
+  document.getElementById("lightbox-img").src = galeria[0];
+  document.getElementById("lightbox-nombre").textContent = nombre;
+  document.getElementById("lightbox-precio").textContent = `Precio: S/. ${precio.toFixed(2)}`;
+
+  const mensaje = `Hola 😊 quiero comprar el producto:\n${nombre}\nPrecio: S/. ${precio}`;
+  document.getElementById("lightbox-whatsapp").href =
+    `https://wa.me/51990662988?text=${encodeURIComponent(mensaje)}`;
+
+  document.getElementById("lightbox").classList.add("activo");
+}
+
+/* Cerrar */
+function cerrarGaleria() {
+  document.getElementById("lightbox").classList.remove("activo");
+}
+
+/* Navegar */
+function imagenSiguiente() {
+  indiceActual = (indiceActual + 1) % galeria.length;
+  cambiarImagen();
+}
+
+function imagenAnterior() {
+  indiceActual = (indiceActual - 1 + galeria.length) % galeria.length;
+  cambiarImagen();
+}
+
+/* Animación */
+function cambiarImagen() {
+  const img = document.getElementById("lightbox-img");
+  img.classList.remove("animar");
+  void img.offsetWidth;
+  img.src = galeria[indiceActual];
+  img.classList.add("animar");
+}
+
+/* 👉 Swipe móvil */
+let inicioX = 0;
+
+document.getElementById("lightbox").addEventListener("touchstart", e => {
+  inicioX = e.touches[0].clientX;
+});
+
+document.getElementById("lightbox").addEventListener("touchend", e => {
+  const finX = e.changedTouches[0].clientX;
+  const diferencia = inicioX - finX;
+
+  if (diferencia > 40) imagenSiguiente();   // swipe izquierda
+  if (diferencia < -40) imagenAnterior();  // swipe derecha
+});
