@@ -257,3 +257,60 @@ section {
     bottom: 80px;
   }
 }
+/* MÉTODOS DE PAGO */
+.metodos-pago {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.metodos-pago p {
+  font-weight: bold;
+  color: #ff5fa2;
+  margin-bottom: 10px;
+}
+
+/* Botones Yape / Plin */
+.btn-yape,
+.btn-plin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 22px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Logos */
+.btn-yape img,
+.btn-plin img {
+  width: 28px;      /* 👈 TAMAÑO IDEAL */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Colores */
+.btn-yape {
+  background: #7b1fa2;
+  color: white;
+}
+
+.btn-plin {
+  background: #00c853;
+  color: white;
+}
+@media (max-width: 768px) {
+  .btn-yape img,
+  .btn-plin img {
+    width: 24px;   /* un poco más pequeño en móvil */
+  }
+
+  .btn-yape,
+  .btn-plin {
+    font-size: 14px;
+    padding: 9px;
+  }
+}
