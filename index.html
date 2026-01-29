@@ -19,10 +19,19 @@
   <span class="cerrar-lightbox" onclick="cerrarGaleria()">&times;</span>
 
   <button class="nav prev" onclick="imagenAnterior()">❮</button>
-  <img id="lightbox-img">
+
+  <div class="lightbox-contenido">
+    <img id="lightbox-img">
+
+    <div class="lightbox-info">
+      <h3 id="lightbox-nombre"></h3>
+      <p id="lightbox-precio"></p>
+      <a id="lightbox-whatsapp" target="_blank">Comprar por WhatsApp 💖</a>
+    </div>
+  </div>
+
   <button class="nav next" onclick="imagenSiguiente()">❯</button>
 </div>
-
 <body>
 
 <!-- WhatsApp flotante -->
@@ -557,22 +566,11 @@
       <img src="Cartera Kawaii  con lazo 4.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
       <img 
   <img
-  src="Cartera Kawaii  con lazo 1.png"
+  src="Cartera Kawaii  con lazo.png"
   alt="CARTERA KAWAII CON LAZO"
   class="img-producto"
-  onclick="abrirGaleria([
-    'Cartera Kawaii  con lazo 1.png',
-    'Cartera Kawaii  con lazo 2.png',
-    'Cartera Kawaii  con lazo 3.png',
-    'Cartera Kawaii  con lazo 4.png'
-  ])">
-
-    </div>
-  </div>
-
-  <h4>CARTERA KAWAII CON LAZO</h4>
-  <p>S/. 50.00</p>
-
+  onclick="abrirGaleria(['Cartera Kawaii  con lazo 1.png','Cartera Kawaii  con lazo 2.png','Cartera Kawaii  con lazo 3.png','Cartera Kawaii  con lazo 4.png'],
+    'CARTERA KAWAII CON LAZO',50)">
   <div class="acciones-producto">
     <button onclick="agregarAlCarrito('CARTERA KAWAII CON LAZO', 50, 'Cartera Kawaii  con lazo 1.png')">Agregar</button>
     <button onclick="comprarDirecto('CARTERA KAWAII CON LAZO', 50)">Comprar</button>
