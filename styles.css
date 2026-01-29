@@ -695,3 +695,16 @@ footer::before {
   font-weight: 600;
   letter-spacing: 0.3px;
 }
+@media (max-width: 768px) {
+  .categorias-explora h2 {
+    font-size: 22px;
+  }
+
+  .categoria-card {
+    padding: 18px 10px;
+  }
+
+  .categoria-card .icono {
+    font-size: 30px;
+  }
+}
