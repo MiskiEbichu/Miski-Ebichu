@@ -135,3 +135,14 @@ function finalizarCompra(metodo) {
 function cambiarImagen(idImagen, nuevaSrc) {
   document.getElementById(idImagen).src = nuevaSrc;
 }
+function abrirImagen(src) {
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+
+  img.src = src;
+  lightbox.style.display = "flex";
+}
+
+function cerrarImagen() {
+  document.getElementById("lightbox").style.display = "none";
+}
