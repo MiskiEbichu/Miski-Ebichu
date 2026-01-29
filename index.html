@@ -537,21 +537,25 @@
   <div class="categoria" id="Carteras">
     <h3>👜 Carteras</h3>
 
-    <article class="producto">
-  <div class="galeria-producto">
-    <img id="img-Cartera Kawaii con Lazo" src="Cartera Kawaii  con lazo.png" alt="CARTERA KAWAII CON LAZO" class="img-principal">
-
-    <div class="miniaturas">
-      <img src="Cartera Kawaii  con lazo 1.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
-      <img src="Cartera Kawaii  con lazo 2.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
-      <img src="Cartera Kawaii  con lazo 3.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
-      <img src="Cartera Kawaii  con lazo 4.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)"> 
-  
-  <div class="acciones-producto">
-    <button onclick="agregarAlCarrito('CARTERA KAWAII CON LAZO', 50, 'Cartera Kawaii  con lazo 1.png')">Agregar</button>
-    <button onclick="comprarDirecto('CARTERA KAWAII CON LAZO', 50)">Comprar</button>
+    <div class="producto">
+  <div class="slider-producto" data-index="0">
+    <img src="Cartera Kawaii  con lazo.png" class="activo">
+    <img src="Cartera Kawaii  con lazo 1.png">
+    <img src="Cartera Kawaii  con lazo 2.png">
+    <img src="Cartera Kawaii  con lazo 3.png">
+    <img src="Cartera Kawaii  con lazo 4.png">
   </div>
-</article>
+
+  <h4>CARTERA KAWAII CON LAZO</h4>
+  <p>S/. 50.00</p>
+
+  <button onclick="agregarAlCarrito('CARTERA KAWAII CON LAZO', 50)">
+    Agregar al carrito
+  </button>
+  <button onclick="comprarDirecto('CARTERA KAWAII CON LAZO', 50)">
+    Comprar
+  </button>
+</div>
 
     <article class="producto">
       <img src="Cartera corazón.jpeg" alt="CARTERA BROCHE CORAZON">
