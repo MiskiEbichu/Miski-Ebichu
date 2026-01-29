@@ -314,3 +314,60 @@ section {
     padding: 9px;
   }
 }
+/* =========================
+   YAPE / PLIN – TAMAÑO FINAL
+========================= */
+
+/* Contenedor */
+.metodos-pago {
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Botones */
+.btn-yape,
+.btn-plin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px;          /* 👈 más compacto */
+  margin-bottom: 6px;
+  border-radius: 18px;
+  font-size: 14px;       /* 👈 texto más pequeño */
+}
+
+/* LOGOS (AQUÍ ESTÁ LA CLAVE) */
+.btn-yape img,
+.btn-plin img {
+  width: 18px !important;   /* 👈 MUCHO MÁS PEQUEÑO */
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  object-fit: contain;
+}
+
+/* Colores */
+.btn-yape {
+  background: #7b1fa2;
+  color: white;
+}
+
+.btn-plin {
+  background: #00c853;
+  color: white;
+}
+@media (max-width: 768px) {
+  .btn-yape img,
+  .btn-plin img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .btn-yape,
+  .btn-plin {
+    font-size: 13px;
+    padding: 7px;
+  }
+}
