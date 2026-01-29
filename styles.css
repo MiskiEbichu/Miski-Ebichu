@@ -470,3 +470,44 @@ section {
   transform: scale(1.18);
   color: #ff4fa0;
 }
+.producto {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover en tarjeta */
+.producto:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(255, 122, 191, 0.35);
+}
+.producto img {
+  transition: transform 0.35s ease;
+  border-radius: 14px;
+}
+
+/* Zoom SOLO imagen */
+.producto:hover img {
+  transform: scale(1.08);
+}
+.producto h4 {
+  transition: color 0.3s ease;
+}
+
+.producto:hover h4 {
+  color: #ff4fa0;
+}
+.producto p {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.producto:hover p {
+  transform: scale(1.05);
+  color: #ff2f92;
+}
+.producto button {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.producto button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
