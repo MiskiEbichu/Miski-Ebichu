@@ -371,3 +371,76 @@ section {
     padding: 7px;
   }
 }
+/* =========================
+   MÉTODOS DE PAGO – ESTÉTICO
+========================= */
+
+.metodos-pago {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Tarjeta base */
+.btn-yape,
+.btn-plin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: #fff;
+  border-radius: 16px;
+  padding: 10px 12px;
+
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover suave */
+.btn-yape:hover,
+.btn-plin:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* Logos */
+.btn-yape img,
+.btn-plin img {
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain;
+}
+
+/* Colores delicados */
+.btn-yape {
+  color: #7b1fa2;
+  border-left: 4px solid #7b1fa2;
+}
+
+.btn-plin {
+  color: #00a152;
+  border-left: 4px solid #00a152;
+}
+@media (max-width: 768px) {
+  .btn-yape,
+  .btn-plin {
+    font-size: 13px;
+    padding: 9px 10px;
+    border-radius: 14px;
+  }
+
+  .btn-yape img,
+  .btn-plin img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
