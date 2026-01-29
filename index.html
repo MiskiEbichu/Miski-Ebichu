@@ -14,6 +14,11 @@
     html { scroll-behavior: smooth; }
   </style>
 </head>
+  
+<div id="lightbox" onclick="cerrarImagen()">
+  <span class="cerrar-lightbox">&times;</span>
+  <img id="lightbox-img">
+</div>
 
 <body>
 
@@ -547,6 +552,11 @@
       <img src="Cartera Kawaii  con lazo 2.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
       <img src="Cartera Kawaii  con lazo 3.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
       <img src="Cartera Kawaii  con lazo 4.png" onclick="cambiarImagen('img-CARTERA KAWAII CON LAZO', this.src)">
+      <img 
+  src="Cartera Kawaii  con lazo.png"
+  alt="CARTERA KAWAII CON LAZO"
+  class="img-producto"
+  onclick="abrirImagen(this.src)">
     </div>
   </div>
 
