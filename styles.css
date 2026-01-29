@@ -708,3 +708,29 @@ footer::before {
     font-size: 30px;
   }
 }
+.categorias-explora h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+.categoria-card .texto {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+}
+.categoria-card .icono {
+  font-size: 32px;
+  line-height: 1;
+}
+@media (max-width: 768px) {
+  .categorias-explora h2 {
+    font-size: 24px;
+    letter-spacing: 0.6px;
+  }
+
+  .categoria-card .texto {
+    font-size: 14px;
+  }
+}
