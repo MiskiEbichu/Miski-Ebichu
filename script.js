@@ -93,4 +93,35 @@ function toggleCarrito() {
   const panel = document.getElementById("panel-carrito");
   panel.classList.toggle("activo");
 }
+document.querySelectorAll('.slider-producto').forEach(slider => {
+  let index = 0;
+  const imgs = slider.querySelectorAll('img');
+  let startX = 0;
+
+  function mostrar(i) {
+    imgs.forEach(img => img.classList.remove('activo'));
+    imgs[i].classList.add('activo');
+    index = i;
+  }
+
+  // CLIC (PC)
+  slider.addEventListener('click', () => {
+    mostrar((index + 1) % imgs.length);
+  });
+
+  // DESLIZAR (MÓVIL)
+  slider.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 40) {
+      mostrar((index + 1) % imgs.length);
+    }
+    if (endX - startX > 40) {
+      mostrar((index - 1 + imgs.length) % imgs.length);
+    }
+  });
+});
 
