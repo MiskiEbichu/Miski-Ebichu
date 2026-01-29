@@ -444,3 +444,29 @@ section {
     height: 16px !important;
   }
 }
+.btn-yape img,
+.btn-plin img {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Hover */
+.btn-yape:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.15);
+}
+
+.btn-plin:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.15);
+}
+.redes-sociales a i {
+  font-size: 26px;
+  color: #ff7abf;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+/* Hover suave */
+.redes-sociales a:hover i {
+  transform: scale(1.18);
+  color: #ff4fa0;
+}
