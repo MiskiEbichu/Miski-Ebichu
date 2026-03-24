@@ -753,3 +753,10 @@ footer::before {
   font-size: 13px;
   margin-bottom: 10px;
 }
+#buscador {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
