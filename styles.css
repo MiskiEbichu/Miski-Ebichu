@@ -739,3 +739,17 @@ footer::before {
     font-size: 14px;
   }
 }
+.descripcion-larga {
+  display: none;
+  font-size: 13px;
+  color: #666;
+}
+
+.btn-vermas {
+  background: none;
+  border: none;
+  color: #ff69b4;
+  cursor: pointer;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
