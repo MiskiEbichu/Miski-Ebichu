@@ -125,3 +125,14 @@ document.querySelectorAll('.slider-producto').forEach(slider => {
   });
 });
 
+function toggleDescripcion(btn) {
+  const desc = btn.previousElementSibling;
+
+  if (desc.style.display === "block") {
+    desc.style.display = "none";
+    btn.innerText = "Ver más";
+  } else {
+    desc.style.display = "block";
+    btn.innerText = "Ver menos";
+  }
+}
