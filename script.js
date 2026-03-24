@@ -136,3 +136,12 @@ function toggleDescripcion(btn) {
     btn.innerText = "Ver menos";
   }
 }
+function filtrarProductos() {
+  const input = document.getElementById("buscador").value.toLowerCase();
+  const productos = document.querySelectorAll(".producto");
+
+  productos.forEach(p => {
+    const nombre = p.querySelector("h4").innerText.toLowerCase();
+    p.style.display = nombre.includes(input) ? "block" : "none";
+  });
+}
