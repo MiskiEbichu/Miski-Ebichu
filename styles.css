@@ -729,7 +729,12 @@ footer::before {
     font-size: 24px;
     letter-spacing: 0.6px;
   }
-
+.descripcion {
+  font-size: 13px;
+  color: #777;
+  margin: 5px 0 10px;
+  font-style: italic;
+}
   .categoria-card .texto {
     font-size: 14px;
   }
