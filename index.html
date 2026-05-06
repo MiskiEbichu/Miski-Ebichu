@@ -316,14 +316,27 @@ Ideal para salidas nocturnas, citas o eventos casuales.
       <button type="button" onclick="comprarDirecto('PAR MEDIAS TOBILLERAS',4)">Comprar</button>
     </article>
 
-      <article class="producto">
-      <img src="Zapatilla_stitch.jpeg" alt="ZAPATILLA DISNEY STITCH ORIGINAL">
-      <h4>ZAPATILLA DISNEY STITCH ORIGINAL</h4>
-      <p class="descripcion">¡Lleva la magia y ternura de Stitch en cada paso! Estas zapatillas combinan un diseño urbano moderno con los detalles encantadores que caracterizan a Miski Ebichu. Son el complemento ideal para quienes buscan un estilo kawaii, cómodo y lleno de personalidad.</p>
-      <p>S/. 280.00</p>
-      <button type="button" onclick="agregarAlCarrito('ZAPATILLA DISNEY STITCH ORIGINAL',280,'1 par de medias tobilleras.jpeg')">Agregar</button>
-      <button type="button" onclick="comprarDirecto('ZAPATILLA DISNEY STITCH ORIGINAL',280)">Comprar</button>
-    </article>
+       <article class="producto">
+  <div class="slider-producto" data-index="0">
+    <img src="Zapatilla_stitch.jpeg" class="activo" alt="Zapatilla_stitch.jpeg">
+    <img src="Zapatilla_stitch.jpeg" alt="Zapatilla_stitch.jpeg">
+   </div>
+
+  <h4>ZAPATILLA DISNEY STITCH ORIGINAL</h4>
+     <p class="descripcion-corta">¡Lleva la magia y ternura de Stitch en cada paso!</p>
+<p class="descripcion-larga">
+Estas zapatillas combinan un diseño urbano moderno con los detalles encantadores que caracterizan a Miski Ebichu. Son el complemento ideal para quienes buscan un estilo kawaii, cómodo y lleno de personalidad.
+</p>
+  <button class="btn-vermas" onclick="toggleDescripcion(this)">Ver más</button>    
+  <p>S/. 280.00</p>
+
+  <button onclick="agregarAlCarrito('ZAPATILLA DISNEY STITCH ORIGINAL', 280)">
+    Agregar al carrito
+  </button>
+  <button onclick="comprarDirecto('ZAPATILLA DISNEY STITCH ORIGINAL', 280)">
+    Comprar
+   </button>
+</article>
 
     <article class="producto">
       <img src="Sandalias Disney original Bob esponja.jpeg" alt="SANDALIAS DISNEY BOB ESPONJA ORIGINAL">
