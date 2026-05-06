@@ -322,20 +322,29 @@ Ideal para salidas nocturnas, citas o eventos casuales.
       <button type="button" onclick="comprarDirecto('PAR MEDIAS TOBILLERAS',4)">Comprar</button>
     </article>
 
-       <article class="producto">
-      <img src="Zapatilla_stitch.png" alt="ZAPATILLA DISNEY STITCH ORIGINAL">
-      <h4>ZAPATILLA DISNEY STITCH ORIGINAL</h4>
-      <p class="descripcion">¡Lleva la magia y ternura de Stitch en cada paso!</p>
-      <p class="descripcion-larga">
+      <article class="producto">
+  <div class="slider-producto" data-index="0">
+    <img src="Zapatilla_stitch.png" class="activo" alt="Zapatilla_stitch.png">
+    <img src="Zapatilla_mafalda.png" alt="Zapatilla_mafalda.png">
+    </div>
+
+  <h4>ZAPATILLA DISNEY ORIGINAL</h4>
+     <p class="descripcion-corta">¡Lleva la magia y ternura de Disney en cada paso!</p>
+<p class="descripcion-larga">
 Estas zapatillas combinan un diseño urbano moderno con los detalles encantadores que caracterizan a Miski Ebichu. Son el complemento ideal para quienes buscan un estilo kawaii, cómodo y lleno de personalidad.
 </p>
-      <button class="btn-vermas" onclick="toggleDescripcion(this)">Ver más</button>
-      <p>S/. 280.00</p>
-      <button type="button" onclick="agregarAlCarrito('ZAPATILLA DISNEY STITCH ORIGINAL',280,'Zapatilla_stitch.png')">Agregar</button>
-      <button type="button" onclick="comprarDirecto('ZAPATILLA DISNEY STITCH ORIGINAL',280)">Comprar</button>
-    </article>
+  <button class="btn-vermas" onclick="toggleDescripcion(this)">Ver más</button>    
+  <p>S/. 280.00</p>
 
-      <article class="producto">
+  <button onclick="agregarAlCarrito('ZAPATILLA DISNEY ORIGINAL', 280)">
+    Agregar al carrito
+  </button>
+  <button onclick="comprarDirecto('ZAPATILLA DISNEY ORIGINAL', 280)">
+    Comprar
+   </button>
+</article>
+
+       <article class="producto">
       <img src="Pantufla_Stitch.png" alt="PANTUFLAS STITCH DISNEY ORIGINAL">
       <h4>PANTUFLAS STITCH DISNEY ORIGINAL</h4>
       <p class="descripcion-corta">¡Calidez y ternura para tus pies!🌸</p>
